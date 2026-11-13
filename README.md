@@ -2,6 +2,10 @@
 
 Primeira versão demonstrativa do Projeto Ponte, iniciativa do Portal VPM. Apresenta a proposta, os principais públicos, a busca pública e exemplos de painéis. Os perfis e projetos são **fictícios**. Esta publicação não possui cadastro, login, armazenamento, cursos operacionais ou coleta de dados de saúde.
 
+## Identidade visual proposta
+
+Os documentos de referência pedem que a experiência tenha identidade visual do Projeto Ponte, mas não definem cores, tipografia nem logotipo. Esta proposta usa o arco da ponte como símbolo de aproximação entre pessoas, com verde profundo, terracota e tons de papel. A tipografia combina uma serifada acolhedora nos títulos com uma fonte simples nos textos e controles. O Portal VPM aparece como marca responsável, sem determinar a aparência principal do Ponte. A identidade ainda precisa de validação da cliente antes de ser considerada definitiva.
+
 ## Executar localmente
 
 Os arquivos são HTML, CSS e JavaScript sem etapa de build. Na pasta do projeto, execute `python -m http.server 8765` e abra `http://localhost:8765`.

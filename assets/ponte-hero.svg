@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 620" role="img" aria-label="Ilustração de uma ponte conectando pessoas e iniciativas">
+  <rect width="700" height="620" rx="34" fill="#dcebe4"/>
+  <circle cx="580" cy="103" r="71" fill="#f7d9b4"/>
+  <circle cx="110" cy="160" r="41" fill="#b6d5ce"/>
+  <path d="M0 473c96-41 171-48 256-26 117 31 184 32 267-12 64-35 121-39 177-24v209H0z" fill="#a9cfc2"/>
+  <path d="M0 520c127-45 216-28 319 8 127 45 256 6 381-23v115H0z" fill="#6fa89a"/>
+  <path d="M79 437c64-185 161-286 271-286s207 101 271 286" fill="none" stroke="#174c49" stroke-width="30" stroke-linecap="round"/>
+  <path d="M72 446h556" stroke="#fff8ec" stroke-width="31" stroke-linecap="round"/>
+  <path d="M73 447h555" stroke="#d26952" stroke-width="5" stroke-linecap="round"/>
+  <path d="M170 407v-97m360 97v-97" stroke="#174c49" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="195" cy="235" r="18" fill="#d26952"/>
+  <path d="M195 255v70m0-48-27 33m27-33 26 32" fill="none" stroke="#d26952" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="350" cy="205" r="20" fill="#174c49"/>
+  <path d="M350 227v82m0-55-31 38m31-38 31 38" fill="none" stroke="#174c49" stroke-width="13" stroke-linecap="round"/>
+  <circle cx="506" cy="238" r="18" fill="#d26952"/>
+  <path d="M506 258v68m0-43-26 29m26-29 26 29" fill="none" stroke="#d26952" stroke-width="12" stroke-linecap="round"/>
+  <path d="M260 117c46-23 91-34 137-29" fill="none" stroke="#d26952" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 13"/>
+  <path d="M470 146c20 8 37 20 53 35" fill="none" stroke="#d26952" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 13"/>
+  <rect x="44" y="40" width="171" height="44" rx="22" fill="#fff8ec"/>
+  <text x="129" y="68" text-anchor="middle" fill="#174c49" font-family="Arial,sans-serif" font-weight="700" font-size="16">gente que cuida</text>
+  <rect x="477" y="332" width="174" height="44" rx="22" fill="#fff8ec"/>
+  <text x="564" y="360" text-anchor="middle" fill="#174c49" font-family="Arial,sans-serif" font-weight="700" font-size="16">gente que faz</text>
+</svg>
