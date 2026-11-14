@@ -75,6 +75,35 @@ const roles = {
   }
 };
 
+// Atalhos prioritários do Documento 4. As áreas sem dados reais mostram a estrutura prevista.
+const doc4Modules = {
+  paciente: [
+    ['Meu Oncoflix','Jornadas compatíveis com o perfil e as regras de acesso.'],['Minhas jornadas','Percursos iniciados e progresso da sessão.'],['Continue de onde parei','Retomada da jornada demonstrativa.'],['Meu desenvolvimento','Atividades e caminhos de participação.'],['Selos e certificados','Reconhecimentos somente quando previstos em iniciativas reais.'],['Pontuações e benefícios','Regras futuras ainda sujeitas à definição.'],['Convites recebidos','Convites específicos mediante autorização.'],['Oportunidades disponíveis','Participação conforme critérios de cada iniciativa.'],['Projetos e participações','Histórico de participação em iniciativas.'],['Documentos e autorizações','Registros restritos ao titular e pessoas autorizadas.'],['Interesses e disponibilidade','Temas e formas de participação escolhidos por você.'],['Meu perfil e privacidade','Informações da conta e preferências de privacidade.']
+  ],
+  familiar: [
+    ['Jornadas recomendadas','Conteúdos destinados à rede de apoio.'],['Meu Oncoflix','Acesso às jornadas e ao progresso da sessão.'],['Minha participação','Atividades e iniciativas de que você participa.'],['Conteúdos sobre rede de apoio','Materiais para familiares e cuidadores.'],['Convites e oportunidades','Propostas compatíveis com suas preferências.'],['Atividades e eventos','Encontros e ações disponíveis, quando houver.'],['Meus certificados','Certificados apenas quando previstos por uma jornada.'],['Meu perfil e privacidade','Vínculo, interesses e escolhas de visibilidade.']
+  ],
+  profissional: [
+    ['Meu perfil profissional','Formação, especialidades e atuação.'],['Prévia da minha vitrine','Modelo da apresentação pública autorizada.'],['Atualizar informações','Dados profissionais e canais de atendimento.'],['Meu Oncoflix','Educação e atualização para profissionais.'],['Jornadas profissionais','Conteúdos relacionados à atuação.'],['Convites para projetos','Propostas do Portal VPM sujeitas a aceite.'],['Oportunidades de participação','Palestras, eventos e outras iniciativas.'],['Minhas participações','Histórico de iniciativas.'],['Documentos e autorizações','Comprovações e permissões aplicáveis.'],['Notificações','Avisos relativos ao perfil e aos projetos.']
+  ],
+  ong: [
+    ['Meu perfil institucional','Apresentação, sede e abrangência.'],['Prévia da página pública','Modelo de página institucional autorizada.'],['Atualizar informações','Dados e serviços da organização.'],['Meu diagnóstico institucional','Análise restrita à organização e ao Portal VPM.'],['Meu plano de desenvolvimento','Necessidades e ações de fortalecimento.'],['Jornadas para organizações','Educação e capacitação institucional.'],['Convites e oportunidades','Possibilidades avaliadas pelo Portal VPM.'],['Projetos em andamento','Somente iniciativas da organização.'],['Minhas conexões','Relações mediadas e acompanhadas.'],['Documentos e formalizações','Arquivos e acordos com acesso definido.'],['Contrapartidas e entregas','Responsabilidades assumidas em projetos.'],['Indicadores e relatórios','Resultados da organização com permissão.'],['Histórico de participação','Iniciativas concluídas ou anteriores.']
+  ],
+  empreendedora: [
+    ['Meu perfil empreendedor','História e atuação da empreendedora.'],['Prévia da minha vitrine','Modelo de página pública do negócio.'],['Minha marca e meu negócio','Apresentação e propósito da marca.'],['Meus produtos e serviços','Fichas para itens autorizados.'],['Imagens e informações','Materiais de apresentação sujeitos à revisão.'],['Links comerciais','Canais externos autorizados.'],['Jornadas educacionais','Educação para desenvolvimento e negócios.'],['Convites e oportunidades','Possibilidades de participação.'],['Projetos e participações','Iniciativas de que faz parte.'],['Documentos e autorizações','Registros necessários para divulgação e projetos.'],['Notificações','Avisos sobre o perfil e as iniciativas.']
+  ],
+  comunicador: [
+    ['Meu perfil privado','Apresentação restrita ao titular e ao Portal VPM.'],['Temas de atuação','Causas e assuntos com os quais trabalha.'],['Canais e formatos','Redes, meios e tipos de conteúdo.'],['Minha disponibilidade','Interesse e disponibilidade para iniciativas.'],['Convites recebidos','Propostas específicas sujeitas a aceite.'],['Oportunidades disponíveis','Possibilidades conforme perfil e permissão.'],['Projetos em andamento','Iniciativas em que participa.'],['Briefings e orientações','Diretrizes de cada projeto autorizado.'],['Entregas pendentes','Atividades acordadas, quando houver.'],['Aprovações','Revisões de materiais conforme projeto.'],['Histórico de participações','Trabalhos realizados na plataforma.'],['Autorizações de imagem e conteúdo','Permissões registradas por iniciativa.'],['Remunerações e contrapartidas','Condições apenas quando aplicáveis e acordadas.'],['Meu Oncoflix','Jornadas disponíveis para o perfil.']
+  ],
+  empresa: [
+    ['Meus projetos','Somente projetos atribuídos à empresa e ao representante.'],['Projetos em andamento','Etapas das iniciativas autorizadas.'],['Indicadores de execução','Dados agregados e autorizados.'],['Cronogramas','Prazos dos projetos atribuídos.'],['Entregas pendentes','Materiais e atividades previstos em contrato.'],['Materiais para aprovação','Revisões permitidas pelo projeto.'],['Solicitações de alteração','Pedidos registrados junto ao Portal VPM.'],['Relatórios','Acompanhamento dos projetos autorizados.'],['Resultados e impacto','Indicadores aprovados para compartilhamento.'],['Documentos e formalizações','Acordos e arquivos específicos.'],['Comunicação com o Portal VPM','Contato institucional sobre projetos.']
+  ],
+  admin: [
+    ['Visão geral da plataforma','Acompanhamento administrativo com acesso segmentado.'],['Usuários e perfis','Gestão conforme função e necessidade.'],['Validação de cadastros','Análise humana, justificativa e histórico.'],['Diretório de ONGs','Revisão de perfis institucionais públicos.'],['Vitrines públicas','Aprovação de empreendedoras e profissionais.'],['Banco privado de talentos','Consulta restrita de comunicadores e participantes.'],['Empresas e parceiros','Relações institucionais.'],['Projetos e contratos','Governança das iniciativas.'],['Oportunidades e convites','Curadoria e acompanhamento.'],['Oncoflix e educação','Categorias, jornadas e regras de acesso.'],['Gamificação e benefícios','Regras futuras sujeitas à definição.'],['Indicadores e relatórios','Dados registrados, documentados e validados.'],['Biblioteca de produção','Materiais e direitos de uso.'],['Autorizações e documentos','Permissões e arquivos restritos.'],['Comunicação e suporte','Avisos e solicitações.'],['Segurança e auditoria','Acessos, permissões e histórico.']
+  ]
+};
+for(const [id,modules] of Object.entries(doc4Modules))roles[id].modules=modules;
+
 const demoAccounts = [
   ['paciente@ponte.test','Paciente ou sobrevivente',['paciente']],
   ['familiar@ponte.test','Familiar ou rede de apoio',['familiar']],
@@ -112,7 +141,21 @@ function institutionField(role,where){
 function login(email,password){
   const found=[...demoAccounts,...createdAccounts].find(item=>item.email.toLowerCase()===email.trim().toLowerCase()&&item.password===password);
   if(!found){showError('loginError','E-mail ou senha de teste não conferem. Confira os dados e tente novamente.');return;}
+  sessionStorage.removeItem('ponteDemoProgress');
   account=found; activeRole=found.profiles[0].role; clearErrors(); renderDashboard();
+}
+function renderFeature(){
+  const cards={
+    paciente:`<div class="role-feature feature-patient"><div><span class="eyebrow">APRENDA NO SEU RITMO</span><h3>Seu caminho começa pelo Oncoflix.</h3><p>Explore jornadas, retome etapas de teste e escolha como deseja participar das iniciativas.</p><a href="oncoflix.html">Abrir meu Oncoflix ↗</a></div><div class="feature-side"><strong>Seu espaço é privado</strong><span>Educação · participação · autonomia</span><span>Interesses informados por você</span></div></div>`,
+    familiar:`<div class="role-feature feature-family"><div><span class="eyebrow">REDE DE APOIO</span><h3>Informação para estar junto.</h3><p>Encontre percursos para familiares e cuidadores, além das atividades de que você decidir participar.</p><a href="oncoflix.html">Ver jornadas para a rede de apoio ↗</a></div><div class="feature-side"><strong>Você escolhe o que contar</strong><span>Vínculo e papel no cuidado são opcionais</span><span>Seu perfil não é público</span></div></div>`,
+    profissional:`<div class="role-feature feature-professional"><div><span class="eyebrow">ATUAÇÃO PROFISSIONAL</span><h3>Seu trabalho, com apresentação clara.</h3><p>Complete suas informações, confira um modelo de vitrine e acompanhe jornadas e convites compatíveis.</p><a href="perfil.html?tipo=profissional&id=prof-01">Ver modelo de vitrine ↗</a></div><div class="feature-side"><strong>Publicação sob revisão</strong><span>Cadastro completo ≠ registro validado</span><span><a href="oncoflix.html">Explorar Oncoflix ↗</a></span></div></div>`,
+    ong:`<div class="role-feature feature-ong"><div><span class="eyebrow">GESTÃO DA ORGANIZAÇÃO</span><h3>Fortalecer a atuação, acompanhar projetos.</h3><p>A página pública é uma parte do trabalho. Diagnóstico, documentos e necessidades de desenvolvimento permanecem restritos.</p><a href="perfil.html?tipo=ong&id=ong-01">Ver modelo de página pública ↗</a></div><div class="feature-side"><strong>Ambiente institucional</strong><span>Diagnóstico interno, sem ranking</span><span>Projetos e representantes autorizados</span></div></div>`,
+    empreendedora:`<div class="role-feature feature-entrepreneur"><div><span class="eyebrow">VITRINE DO NEGÓCIO</span><h3>Uma página para apresentar o que você faz.</h3><p>Organize a história da marca, produtos, serviços e links comerciais que desejar divulgar.</p><a href="perfil.html?tipo=empreendedora&id=empre-01">Ver modelo de vitrine ↗</a></div><div class="feature-side"><strong>Você decide o que divulgar</strong><span>Fichas de produtos e serviços</span><span>Publicação mediante autorização</span></div></div>`,
+    comunicador:`<div class="role-feature feature-communicator"><div><span class="eyebrow">BASE PRIVADA DE COLABORADORES</span><h3>Seu perfil não aparece no site público.</h3><p>Temas, canais e disponibilidade ajudam o Portal VPM a avaliar convites para campanhas e projetos específicos.</p><a href="oncoflix.html">Abrir meu Oncoflix ↗</a></div><div class="feature-side"><strong>Nenhum convite real nesta versão</strong><span>Briefings e entregas por projeto</span><span>Autorizações registradas por iniciativa</span></div></div>`,
+    empresa:`<div class="role-feature feature-company"><div><span class="eyebrow">ACOMPANHAMENTO DE PROJETOS</span><h3>Somente o que foi atribuído à sua equipe.</h3><p>Quando houver projetos autorizados, este espaço reunirá cronogramas, entregas, aprovações e indicadores permitidos.</p><span class="feature-empty">Nenhum projeto real atribuído nesta demonstração</span></div><div class="feature-side"><strong>Acesso limitado por projeto</strong><span>Sem dados individuais de saúde</span><span>Sem acesso à base geral da rede</span></div></div>`,
+    admin:`<div class="role-feature feature-admin"><div><span class="eyebrow">GOVERNANÇA PORTAL VPM</span><h3>Um centro de gestão próprio.</h3><p>Cadastros, diretórios, vitrines, educação e projetos passam por funções e permissões administrativas diferentes.</p><span class="feature-empty">Nenhuma aprovação real disponível nesta demonstração</span></div><div class="feature-side"><strong>Fila de demonstração</strong><span>Validações: sem registros reais</span><span>Publicações: sem registros reais</span><span>Banco de talentos: privado</span></div></div>`
+  };
+  $('#roleFeature').innerHTML=cards[activeRole]||'';
 }
 function renderDashboard(){
   const profile=currentProfile(), config=roles[activeRole];
@@ -130,15 +173,19 @@ function renderDashboard(){
   $('#profileNextDetail').textContent=config.nextDetail;
   $('#panelTitle').textContent=profile.institution||config.name;
   $('#panelIntro').textContent=config.intro;
-  $('#moduleGrid').innerHTML=config.modules.map(([title,description],index)=>`<button type="button" class="module-card" data-module="${index}"><span class="module-number">${String(index+1).padStart(2,'0')}</span><strong>${escapeHtml(title)}</strong><span>${escapeHtml(description)}</span><small>${title.startsWith('Meu perfil')||title==='Meu negócio'||title==='Perfil institucional'||title==='Meu perfil institucional'?'Preencher rascunho':'Explorar área'} ↗</small></button>`).join('');
+  $('#dashboardView').dataset.role=activeRole;
+  renderFeature();
+  $('#moduleGrid').innerHTML=config.modules.map(([title,description],index)=>`<button type="button" class="module-card" data-module="${index}"><span class="module-number">${String(index+1).padStart(2,'0')}</span><strong>${escapeHtml(title)}</strong><span>${escapeHtml(description)}</span><small>${/^(Meu perfil|Minha marca|Atualizar informações)/.test(title)?'Preencher rascunho':'Explorar área'} ↗</small></button>`).join('');
   $('#accessNote').textContent=config.access;
+  sessionStorage.setItem('ponteDemoSession',JSON.stringify({name:account.name,email:account.email,profiles:account.profiles,demo:account.demo,activeRole}));
   location.hash='meu-espaco';
   window.scrollTo({top:0,behavior:'instant'});
 }
 function openModule(index){
   const [title,description]=roles[activeRole].modules[index];
   const profile=currentProfile();
-  const editable=['Meu perfil','Meu negócio','Perfil institucional','Meu perfil institucional'].includes(title);
+  if(/Oncoflix|Jornadas|Educação|Continue de onde parei/i.test(title)&&activeRole!=='admin'){location.href='oncoflix.html';return;}
+  const editable=['Meu perfil','Meu negócio','Perfil institucional','Meu perfil institucional','Meu perfil e privacidade','Meu perfil profissional','Meu perfil empreendedor','Meu perfil privado','Minha marca e meu negócio','Atualizar informações'].includes(title);
   let html=`<span class="eyebrow">${escapeHtml(roles[activeRole].name.toUpperCase())} · DEMONSTRAÇÃO</span><h2>${escapeHtml(title)}</h2><p>${escapeHtml(description)}</p>`;
   if(editable&&roles[activeRole].fields.length){
     html+='<form id="profileEditForm" class="profile-edit-form">';
@@ -169,7 +216,7 @@ $('#registerForm').addEventListener('submit',event=>{
   const institution=($('#registerRoleFields input')?.value||'').trim();
   if((role==='ong'||role==='empresa')&&!institution)return showError('registerError','Informe o nome da organização ou empresa.');
   const created={email,name,password,profiles:[{role,data:{},institution}],demo:false};
-  createdAccounts.push(created);account=created;activeRole=role;renderDashboard();
+  sessionStorage.removeItem('ponteDemoProgress');createdAccounts.push(created);account=created;activeRole=role;renderDashboard();
 });
 $('#profileSelect').addEventListener('change',event=>{activeRole=event.target.value;renderDashboard();});
 $('#moduleGrid').addEventListener('click',event=>{const button=event.target.closest('[data-module]');if(button)openModule(Number(button.dataset.module));});
@@ -189,8 +236,12 @@ $('#addProfileForm').addEventListener('submit',event=>{
   if((role==='ong'||role==='empresa')&&!institution)return showError('addProfileError','Informe o nome da organização ou empresa.');
   account.profiles.push({role,data:{},institution});activeRole=role;$('#profileDialog').close();renderDashboard();
 });
-$('#logoutButton').addEventListener('click',()=>{account=null;activeRole=null;$('#dashboardView').hidden=true;$('#authView').hidden=false;$('#logoutButton').hidden=true;$('#loginForm').reset();$('#demoAccount').value='';showTab('login');window.scrollTo({top:0,behavior:'instant'});});
+$('#logoutButton').addEventListener('click',()=>{account=null;activeRole=null;createdAccounts.length=0;sessionStorage.removeItem('ponteDemoSession');sessionStorage.removeItem('ponteDemoProgress');$('#dashboardView').hidden=true;$('#authView').hidden=false;$('#logoutButton').hidden=true;$('#loginForm').reset();$('#registerForm').reset();$('#demoAccount').value='';showTab('login');window.scrollTo({top:0,behavior:'instant'});});
 $('#closeModule').addEventListener('click',()=>$('#moduleDialog').close());
 $('#closeProfile').addEventListener('click',()=>$('#profileDialog').close());
 for(const dialog of document.querySelectorAll('dialog'))dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
-if(location.hash==='#cadastro')showTab('register');
+try{
+  const restored=JSON.parse(sessionStorage.getItem('ponteDemoSession')||'null');
+  if(restored&&Array.isArray(restored.profiles)&&restored.profiles.length&&roles[restored.activeRole]){account=restored;activeRole=restored.activeRole;renderDashboard();}
+  else if(location.hash==='#cadastro')showTab('register');
+}catch{sessionStorage.removeItem('ponteDemoSession');if(location.hash==='#cadastro')showTab('register');}
