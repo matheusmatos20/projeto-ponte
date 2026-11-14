@@ -1,6 +1,6 @@
 # Projeto Ponte — protótipo navegável
 
-Versão demonstrativa do Projeto Ponte, iniciativa do Portal VPM. Apresenta a proposta, as categorias previstas para os diretórios e as áreas dos perfis. **Não há perfis, organizações ou projetos reais publicados.** Esta publicação não possui cadastro, login, armazenamento, cursos operacionais ou coleta de dados de saúde.
+Versão demonstrativa do Projeto Ponte, iniciativa do Portal VPM. Apresenta a proposta, as categorias previstas para os diretórios, cadastro, entrada e painéis por perfil. **Não há perfis, organizações ou projetos reais publicados.** O cadastro e o login usam apenas dados de teste no navegador. Não há banco de dados, autenticação real, cursos operacionais ou coleta de dados de saúde.
 
 ## Identidade visual proposta
 
@@ -20,7 +20,15 @@ Os arquivos são HTML, CSS e JavaScript sem etapa de build. Na pasta do projeto,
 | Projetos | Vitrines segmentadas em ONG, empreendedora e comunicadora |
 | Parceiros | Apoiadora, patrocinadora e realizadora |
 | Experiência demonstrativa | Alternância entre oito painéis de perfil, sem autenticação |
-| Cadastro progressivo | Explicação dos três níveis, sem formulário ou persistência |
+| Minha conta | Login centralizado, cadastro básico e painel de cada categoria, incluindo administração VPM |
+| Cadastro progressivo | Conta básica e rascunho dos dados específicos; validação humana apenas indicada, sem simulação de aprovação |
+| Múltiplos perfis | Troca de perfil na mesma conta e inclusão de outro tipo sem novo login |
+
+## Acesso de demonstração
+
+Abra `conta.html` ou use **Entrar ou cadastrar** no site. Escolha uma conta de teste na tela de login; a senha de todas é `PonteDemo2026!`. Os e-mails de teste são `paciente@ponte.test`, `familiar@ponte.test`, `profissional@ponte.test`, `ong@ponte.test`, `empreendedora@ponte.test`, `comunicador@ponte.test`, `empresa@ponte.test`, `admin@ponte.test` e `multiperfil@ponte.test`. Este último mostra paciente e empreendedora na mesma conta.
+
+É possível criar outra conta de teste, preencher um rascunho de perfil e adicionar um segundo tipo. Esses dados existem apenas na memória da aba: atualizar ou fechar a página os apaga. Senhas e permissões demonstrativas estão visíveis no código publicado; por isso não devem ser usadas como autenticação real nem receber informações pessoais ou de saúde. O painel da empresa não exibe dados de outras contas, e o painel administrativo não executa aprovações reais.
 
 ## Arquitetura proposta para a aplicação real
 
