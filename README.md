@@ -1,6 +1,6 @@
 # Projeto Ponte — protótipo navegável
 
-Primeira versão demonstrativa do Projeto Ponte, iniciativa do Portal VPM. Apresenta a proposta, os principais públicos, a busca pública e exemplos de painéis. Os perfis e projetos são **fictícios**. Esta publicação não possui cadastro, login, armazenamento, cursos operacionais ou coleta de dados de saúde.
+Versão demonstrativa do Projeto Ponte, iniciativa do Portal VPM. Apresenta a proposta, as categorias previstas para os diretórios e as áreas dos perfis. **Não há perfis, organizações ou projetos reais publicados.** Esta publicação não possui cadastro, login, armazenamento, cursos operacionais ou coleta de dados de saúde.
 
 ## Identidade visual proposta
 
@@ -15,7 +15,7 @@ Os arquivos são HTML, CSS e JavaScript sem etapa de build. Na pasta do projeto,
 | Tela | Fluxo demonstrado |
 | --- | --- |
 | Início / O projeto | Apresentação e quatro pilares |
-| Encontre | Filtros por categoria, estado, área e texto; abertura de perfil fictício |
+| Encontre | Filtros por categoria, área e texto; apresentação dos campos previstos, sem perfis reais |
 | Educação | Estrutura visual de catálogo e formatos futuros |
 | Projetos | Vitrines segmentadas em ONG, empreendedora e comunicadora |
 | Parceiros | Apoiadora, patrocinadora e realizadora |
@@ -42,17 +42,17 @@ Validação documental é decisão humana. Dados e documentos privados nunca dev
 
 ## Etapas sugeridas
 
-1. **Protótipo de navegação — entregue aqui.** Conteúdo público, busca com exemplos fictícios e painéis demonstrativos.
-2. **Fundação da aplicação — alta complexidade.** Banco, autenticação, contas institucionais, múltiplos perfis, autorização no servidor, publicação moderada e trilha de auditoria.
-3. **Operação inicial — alta complexidade.** Cadastro progressivo, validação humana, diretórios com dados reais autorizados e catálogo de educação.
-4. **Expansão — depende de validação do produto.** Cursos com player e progresso, jornadas, projetos patrocinados, relatórios e oportunidades.
+1. **Protótipo de navegação — entregue aqui.** Conteúdo público, categorias de busca e painéis demonstrativos, sem dados reais.
+2. **Fundação da aplicação.** Identidade, autenticação central, contas institucionais, múltiplos perfis, permissões, segurança, privacidade e administração básica.
+3. **Experiência pública.** Diretórios com perfis autorizados, publicação moderada e contato público ou conexão mediada pelo Portal VPM.
+4. **Operação.** Educação, conexões, oportunidades e gestão de projetos; depois, indicadores, relatórios, evidências, atendimento e suporte.
 
 Integrações prováveis: provedor de e-mail transacional para confirmação e avisos; armazenamento privado para documentos; serviço de vídeo; observabilidade e proteção contra abuso. Pagamentos e assinaturas ficam para uma fase futura.
 
 ## Decisões pendentes
 
-Confirmar com a cliente o modelo de contato nos diretórios, critérios de moderação, filtros definitivos, prioridades do MVP, publicação de marcas e projetos, regras de elegibilidade, limites de relatórios para empresas e requisitos de privacidade. Antes de receber dados reais, revisar base legal, avisos, retenção, direitos do titular, segurança e riscos de reidentificação com profissionais especializados.
+O modelo de contato é híbrido: o titular poderá disponibilizar canais públicos, solicitar conexão mediada ou usar ambas as modalidades. A conexão mediada passa pela análise do Portal VPM e só avança com a concordância dos envolvidos. Ainda precisam de validação os critérios de moderação, filtros definitivos, regras de elegibilidade, publicação de marcas e projetos, indicadores e requisitos jurídicos e comerciais. Antes de receber dados reais, revisar base legal, avisos, retenção, direitos do titular, segurança e riscos de reidentificação com profissionais especializados.
 
 ## Origem dos requisitos
 
-O protótipo foi estruturado a partir dos documentos fornecidos pela cliente: “PROJETO PONTE - Protótipo.docx” e “Projeto Ponte - Cadastro, perfis, permissões e segurança.docx”, ambos versão 1.0 de novembro de 2026. Os documentos não são publicados neste repositório.
+O protótipo foi estruturado a partir dos documentos fornecidos pela cliente: “PROJETO PONTE - Protótipo.docx”, “Projeto Ponte - Cadastro, perfis, permissões e segurança.docx”, o trecho do Documento 3 — Fluxos operacionais, regras de negócio e governança da plataforma — e o relatório de revisão cruzada dos Documentos 1, 2 e 3, todos apresentados como versão 1.0 de novembro de 2026. Os documentos não são publicados neste repositório. Foi fornecido apenas um trecho do Documento 3; regras não presentes nesse trecho ou na revisão cruzada permanecem pendentes de confirmação.
