@@ -14,6 +14,8 @@ Protótipo do Projeto Ponte, iniciativa do Portal VPM, atualizado conforme os Do
 | Painéis | Experiências e atalhos específicos para sete tipos de participante e administração VPM |
 | Oncoflix | Descoberta visual, coleções, página individual da jornada, acesso por perfil, progresso e retomada demonstrativos |
 
+A revisão de experiência acrescenta três entradas diretas na primeira tela — **Encontrar, Aprender e Participar** —, uma busca pública por assuntos e áreas, cadastro de teste em três etapas e painéis com atalhos diferentes para cada perfil. As funções sem dados reais são identificadas como prévias. O menu da conta reúne a saída; o menu do perfil e a lista completa de áreas permanecem acessíveis sem ocupar a primeira tela.
+
 Pacientes, familiares e comunicadores **não** têm diretório ou vitrine pública. O diagnóstico institucional da ONG permanece fora da página pública. Nenhuma ONG aparece no diretório até haver dados reais, autorização e revisão. Nenhum perfil, projeto, produto, curso ou parceiro real está publicado. As vitrines e jornadas de exemplo são fictícias e estão identificadas como demonstração. A fotografia da página inicial é ilustrativa e não retrata participantes do projeto.
 
 ## Acesso de teste

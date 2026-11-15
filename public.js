@@ -72,6 +72,20 @@ function renderOngs(){
 $('#entrepreneurShowcase').innerHTML=empreendedoras.map((item,index)=>`<article class="showcase-card"><div class="showcase-art art-${index+1}" aria-hidden="true"><span>${String(index+1).padStart(2,'0')}</span><i>✳</i></div><div class="showcase-body"><small>EXEMPLO FICTÍCIO · ${escapeHtml(item.category.toUpperCase())}</small><h3>${escapeHtml(item.brand)}</h3><p>${escapeHtml(item.summary)}</p><a href="perfil.html?tipo=empreendedora&id=${encodeURIComponent(item.id)}">Ver página de exemplo ↗</a></div></article>`).join('');
 $('#professionalShowcase').innerHTML=profissionais.map((item,index)=>`<article class="showcase-card"><div class="showcase-art professional-art art-${index+1}" aria-hidden="true"><span>${String(index+1).padStart(2,'0')}</span><i>◌</i></div><div class="showcase-body"><small>EXEMPLO FICTÍCIO · ${escapeHtml(item.profession.toUpperCase())}</small><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.summary)}</p><a href="perfil.html?tipo=profissional&id=${encodeURIComponent(item.id)}">Ver página de exemplo ↗</a></div></article>`).join('');
 $('#homeJourneys').innerHTML=window.PONTE_JOURNEYS.slice(0,3).map(item=>`<a class="home-journey ${escapeHtml(item.color)}" href="oncoflix.html?jornada=${encodeURIComponent(item.id)}"><small>JORNADA DE EXEMPLO · ${escapeHtml(item.category.toUpperCase())}</small><strong>${escapeHtml(item.title)}</strong><span>Conhecer a jornada ↗</span></a>`).join('');
+const discoveryItems=[
+  {title:'Organizações de apoio',kind:'Diretório',href:'#ongs',terms:'ong organização apoio acolhimento família transporte direitos psicologia peruca'},
+  {title:'Profissionais de saúde',kind:'Vitrines demonstrativas',href:'#profissionais',terms:'profissional especialista saúde psicologia nutrição'},
+  {title:'Oncoflix',kind:'Jornadas demonstrativas',href:'oncoflix.html',terms:'aprender curso aula educação conhecimento jornada conteúdo'},
+  {title:'Participar de iniciativas',kind:'Projetos ainda não publicados',href:'#participar',terms:'participar iniciativa projeto campanha conexão oportunidade'},
+  ...window.PONTE_JOURNEYS.map(item=>({title:item.title,kind:'Jornada de exemplo',href:`oncoflix.html?jornada=${encodeURIComponent(item.id)}`,terms:[item.category,item.audience,item.summary].join(' ')}))
+];
+function renderGlobalSearch(){
+  const term=normalize($('#globalSearch').value.trim());
+  const matches=(term?discoveryItems.filter(item=>normalize([item.title,item.terms].join(' ')).includes(term)):discoveryItems.slice(0,4)).slice(0,6);
+  $('#globalResults').innerHTML=matches.length?matches.map(item=>`<a href="${escapeHtml(item.href)}"><span>${escapeHtml(item.kind)}</span><strong>${escapeHtml(item.title)}</strong><b aria-hidden="true">↗</b></a>`).join(''):'<p>Não encontramos esse termo. Tente uma palavra mais geral ou escolha uma das áreas abaixo.</p>';
+}
+$('#globalSearch').addEventListener('input',renderGlobalSearch);
 $('#menuButton').addEventListener('click',()=>{const open=$('#mainNav').classList.toggle('open');$('#menuButton').setAttribute('aria-expanded',String(open));});
 document.querySelectorAll('#mainNav a').forEach(link=>link.addEventListener('click',()=>{$('#mainNav').classList.remove('open');$('#menuButton').setAttribute('aria-expanded','false');}));
 $('#year').textContent=new Date().getFullYear();renderNeeds();renderOngs();
+renderGlobalSearch();

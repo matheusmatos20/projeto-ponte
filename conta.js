@@ -96,7 +96,7 @@ const doc4Modules = {
     ['Meu perfil privado','Apresentação restrita ao titular e ao Portal VPM.'],['Temas de atuação','Causas e assuntos com os quais trabalha.'],['Canais e formatos','Redes, meios e tipos de conteúdo.'],['Minha disponibilidade','Interesse e disponibilidade para iniciativas.'],['Convites recebidos','Propostas específicas sujeitas a aceite.'],['Oportunidades disponíveis','Possibilidades conforme perfil e permissão.'],['Projetos em andamento','Iniciativas em que participa.'],['Briefings e orientações','Diretrizes de cada projeto autorizado.'],['Entregas pendentes','Atividades acordadas, quando houver.'],['Aprovações','Revisões de materiais conforme projeto.'],['Histórico de participações','Trabalhos realizados na plataforma.'],['Autorizações de imagem e conteúdo','Permissões registradas por iniciativa.'],['Remunerações e contrapartidas','Condições apenas quando aplicáveis e acordadas.'],['Meu Oncoflix','Jornadas disponíveis para o perfil.']
   ],
   empresa: [
-    ['Meus projetos','Somente projetos atribuídos à empresa e ao representante.'],['Projetos em andamento','Etapas das iniciativas autorizadas.'],['Indicadores de execução','Dados agregados e autorizados.'],['Cronogramas','Prazos dos projetos atribuídos.'],['Entregas pendentes','Materiais e atividades previstos em contrato.'],['Materiais para aprovação','Revisões permitidas pelo projeto.'],['Solicitações de alteração','Pedidos registrados junto ao Portal VPM.'],['Relatórios','Acompanhamento dos projetos autorizados.'],['Resultados e impacto','Indicadores aprovados para compartilhamento.'],['Documentos e formalizações','Acordos e arquivos específicos.'],['Comunicação com o Portal VPM','Contato institucional sobre projetos.']
+    ['Perfil institucional','Dados de apresentação da empresa em rascunho.'],['Meus projetos','Somente projetos atribuídos à empresa e ao representante.'],['Projetos em andamento','Etapas das iniciativas autorizadas.'],['Indicadores de execução','Dados agregados e autorizados.'],['Cronogramas','Prazos dos projetos atribuídos.'],['Entregas pendentes','Materiais e atividades previstos em contrato.'],['Materiais para aprovação','Revisões permitidas pelo projeto.'],['Solicitações de alteração','Pedidos registrados junto ao Portal VPM.'],['Relatórios','Acompanhamento dos projetos autorizados.'],['Resultados e impacto','Indicadores aprovados para compartilhamento.'],['Documentos e formalizações','Acordos e arquivos específicos.'],['Comunicação com o Portal VPM','Contato institucional sobre projetos.']
   ],
   admin: [
     ['Visão geral da plataforma','Acompanhamento administrativo com acesso segmentado.'],['Usuários e perfis','Gestão conforme função e necessidade.'],['Validação de cadastros','Análise humana, justificativa e histórico.'],['Diretório de ONGs','Revisão de perfis institucionais públicos.'],['Vitrines públicas','Aprovação de empreendedoras e profissionais.'],['Banco privado de talentos','Consulta restrita de comunicadores e participantes.'],['Empresas e parceiros','Relações institucionais.'],['Projetos e contratos','Governança das iniciativas.'],['Oportunidades e convites','Curadoria e acompanhamento.'],['Oncoflix e educação','Categorias, jornadas e regras de acesso.'],['Gamificação e benefícios','Regras futuras sujeitas à definição.'],['Indicadores e relatórios','Dados registrados, documentados e validados.'],['Biblioteca de produção','Materiais e direitos de uso.'],['Autorizações e documentos','Permissões e arquivos restritos.'],['Comunicação e suporte','Avisos e solicitações.'],['Segurança e auditoria','Acessos, permissões e histórico.']
@@ -132,6 +132,13 @@ function showTab(which){
   $('#registerTab').setAttribute('aria-selected',String(!login));
   location.hash=login?'entrar':'cadastro';
 }
+let currentRegisterStep=1;
+function showRegisterStep(step){
+  currentRegisterStep=step;
+  for(let index=1;index<=3;index++)$('#registerStep'+index).hidden=index!==step;
+  document.querySelectorAll('.step-indicator span').forEach((node,index)=>node.classList.toggle('active',index+1===step));
+  clearErrors();
+}
 function showError(id,message){const node=$('#'+id);node.textContent=message;node.hidden=false;}
 function clearErrors(){document.querySelectorAll('.form-error').forEach(node=>{node.hidden=true;node.textContent='';});}
 function institutionField(role,where){
@@ -141,41 +148,99 @@ function institutionField(role,where){
 function login(email,password){
   const found=[...demoAccounts,...createdAccounts].find(item=>item.email.toLowerCase()===email.trim().toLowerCase()&&item.password===password);
   if(!found){showError('loginError','E-mail ou senha de teste não conferem. Confira os dados e tente novamente.');return;}
-  sessionStorage.removeItem('ponteDemoProgress');
   account=found; activeRole=found.profiles[0].role; clearErrors(); renderDashboard();
 }
-function renderFeature(){
-  const cards={
-    paciente:`<div class="role-feature feature-patient"><div><span class="eyebrow">APRENDA NO SEU RITMO</span><h3>Seu caminho começa pelo Oncoflix.</h3><p>Explore jornadas, retome etapas de teste e escolha como deseja participar das iniciativas.</p><a href="oncoflix.html">Abrir meu Oncoflix ↗</a></div><div class="feature-side"><strong>Seu espaço é privado</strong><span>Educação · participação · autonomia</span><span>Interesses informados por você</span></div></div>`,
-    familiar:`<div class="role-feature feature-family"><div><span class="eyebrow">REDE DE APOIO</span><h3>Informação para estar junto.</h3><p>Encontre percursos para familiares e cuidadores, além das atividades de que você decidir participar.</p><a href="oncoflix.html">Ver jornadas para a rede de apoio ↗</a></div><div class="feature-side"><strong>Você escolhe o que contar</strong><span>Vínculo e papel no cuidado são opcionais</span><span>Seu perfil não é público</span></div></div>`,
-    profissional:`<div class="role-feature feature-professional"><div><span class="eyebrow">ATUAÇÃO PROFISSIONAL</span><h3>Seu trabalho, com apresentação clara.</h3><p>Complete suas informações, confira um modelo de vitrine e acompanhe jornadas e convites compatíveis.</p><a href="perfil.html?tipo=profissional&id=prof-01">Ver modelo de vitrine ↗</a></div><div class="feature-side"><strong>Publicação sob revisão</strong><span>Cadastro completo ≠ registro validado</span><span><a href="oncoflix.html">Explorar Oncoflix ↗</a></span></div></div>`,
-    ong:`<div class="role-feature feature-ong"><div><span class="eyebrow">GESTÃO DA ORGANIZAÇÃO</span><h3>Fortalecer a atuação, acompanhar projetos.</h3><p>A página pública é uma parte do trabalho. Diagnóstico, documentos e necessidades de desenvolvimento permanecem restritos.</p><a href="perfil.html?tipo=ong&id=ong-01">Ver modelo de página pública ↗</a></div><div class="feature-side"><strong>Ambiente institucional</strong><span>Diagnóstico interno, sem ranking</span><span>Projetos e representantes autorizados</span></div></div>`,
-    empreendedora:`<div class="role-feature feature-entrepreneur"><div><span class="eyebrow">VITRINE DO NEGÓCIO</span><h3>Uma página para apresentar o que você faz.</h3><p>Organize a história da marca, produtos, serviços e links comerciais que desejar divulgar.</p><a href="perfil.html?tipo=empreendedora&id=empre-01">Ver modelo de vitrine ↗</a></div><div class="feature-side"><strong>Você decide o que divulgar</strong><span>Fichas de produtos e serviços</span><span>Publicação mediante autorização</span></div></div>`,
-    comunicador:`<div class="role-feature feature-communicator"><div><span class="eyebrow">BASE PRIVADA DE COLABORADORES</span><h3>Seu perfil não aparece no site público.</h3><p>Temas, canais e disponibilidade ajudam o Portal VPM a avaliar convites para campanhas e projetos específicos.</p><a href="oncoflix.html">Abrir meu Oncoflix ↗</a></div><div class="feature-side"><strong>Nenhum convite real nesta versão</strong><span>Briefings e entregas por projeto</span><span>Autorizações registradas por iniciativa</span></div></div>`,
-    empresa:`<div class="role-feature feature-company"><div><span class="eyebrow">ACOMPANHAMENTO DE PROJETOS</span><h3>Somente o que foi atribuído à sua equipe.</h3><p>Quando houver projetos autorizados, este espaço reunirá cronogramas, entregas, aprovações e indicadores permitidos.</p><span class="feature-empty">Nenhum projeto real atribuído nesta demonstração</span></div><div class="feature-side"><strong>Acesso limitado por projeto</strong><span>Sem dados individuais de saúde</span><span>Sem acesso à base geral da rede</span></div></div>`,
-    admin:`<div class="role-feature feature-admin"><div><span class="eyebrow">GOVERNANÇA PORTAL VPM</span><h3>Um centro de gestão próprio.</h3><p>Cadastros, diretórios, vitrines, educação e projetos passam por funções e permissões administrativas diferentes.</p><span class="feature-empty">Nenhuma aprovação real disponível nesta demonstração</span></div><div class="feature-side"><strong>Fila de demonstração</strong><span>Validações: sem registros reais</span><span>Publicações: sem registros reais</span><span>Banco de talentos: privado</span></div></div>`
-  };
-  $('#roleFeature').innerHTML=cards[activeRole]||'';
+const quickByRole={
+  paciente:[
+    {category:'APRENDER',title:'Oncoflix',note:'Explorar jornadas de exemplo',href:'oncoflix.html'},
+    {category:'PARTICIPAR',title:'Iniciativas',note:'Nenhuma iniciativa publicada ainda',href:'index.html#participar'},
+    {category:'ACOMPANHAR',title:'Meu progresso',note:'Ver jornadas iniciadas',href:'oncoflix.html'},
+    {category:'MINHA CONTA',title:'Meus dados',note:'Editar interesses e preferências',module:'Meu perfil e privacidade'}
+  ],
+  familiar:[
+    {category:'APRENDER',title:'Rede de apoio',note:'Jornadas e conteúdos de exemplo',href:'oncoflix.html'},
+    {category:'PARTICIPAR',title:'Iniciativas',note:'Nenhuma iniciativa publicada ainda',href:'index.html#participar'},
+    {category:'ACOMPANHAR',title:'Minha participação',note:'Prévia sem atividades reais',module:'Minha participação'},
+    {category:'MINHA CONTA',title:'Meus dados',note:'Editar temas e preferências',module:'Meu perfil e privacidade'}
+  ],
+  profissional:[
+    {category:'PERFIL',title:'Meus dados profissionais',note:'Editar informações em rascunho',module:'Meu perfil profissional'},
+    {category:'VITRINE',title:'Ver apresentação',note:'Modelo fictício de vitrine',href:'perfil.html?tipo=profissional&id=prof-01'},
+    {category:'APRENDER',title:'Oncoflix',note:'Jornadas de exemplo',href:'oncoflix.html'},
+    {category:'PARTICIPAR',title:'Oportunidades',note:'Prévia sem convites reais',module:'Convites para projetos'}
+  ],
+  ong:[
+    {category:'ORGANIZAÇÃO',title:'Cadastro institucional',note:'Editar dados em rascunho',module:'Meu perfil institucional'},
+    {category:'DIAGNÓSTICO',title:'Diagnóstico',note:'Área privada em preparação',module:'Meu diagnóstico institucional'},
+    {category:'DESENVOLVIMENTO',title:'Jornadas',note:'Conteúdos demonstrativos',href:'oncoflix.html'},
+    {category:'CONEXÕES',title:'Projetos',note:'Prévia sem projetos reais',module:'Projetos em andamento'}
+  ],
+  empreendedora:[
+    {category:'NEGÓCIO',title:'Meus dados',note:'Editar apresentação em rascunho',module:'Minha marca e meu negócio'},
+    {category:'VITRINE',title:'Ver modelo',note:'Vitrine fictícia para teste',href:'perfil.html?tipo=empreendedora&id=empre-01'},
+    {category:'APRENDER',title:'Oncoflix',note:'Jornadas de exemplo',href:'oncoflix.html'},
+    {category:'PARTICIPAR',title:'Projetos',note:'Prévia sem projetos reais',module:'Projetos e participações'}
+  ],
+  comunicador:[
+    {category:'PERFIL PRIVADO',title:'Meus dados',note:'Editar temas e canais',module:'Meu perfil privado'},
+    {category:'APRENDER',title:'Oncoflix',note:'Jornadas de exemplo',href:'oncoflix.html'},
+    {category:'CONEXÕES',title:'Convites',note:'Prévia sem convites reais',module:'Convites recebidos'},
+    {category:'PROJETOS',title:'Entregas',note:'Prévia sem projetos reais',module:'Entregas pendentes'}
+  ],
+  empresa:[
+    {category:'INSTITUIÇÃO',title:'Meu cadastro',note:'Dados institucionais em rascunho',module:'Perfil institucional'},
+    {category:'PROJETOS',title:'Meus projetos',note:'Nenhum projeto atribuído',module:'Meus projetos'},
+    {category:'ACOMPANHAMENTO',title:'Indicadores',note:'Sem dados autorizados ainda',module:'Indicadores de execução'},
+    {category:'DOCUMENTOS',title:'Formalizações',note:'Prévia de acesso restrito',module:'Documentos e formalizações'}
+  ],
+  admin:[
+    {category:'GESTÃO',title:'Usuários e perfis',note:'Prévia sem registros reais',module:'Usuários e perfis'},
+    {category:'VALIDAÇÃO',title:'Cadastros',note:'Prévia sem aprovações reais',module:'Validação de cadastros'},
+    {category:'PUBLICAÇÃO',title:'Diretórios',note:'Prévia sem perfis reais',module:'Diretório de ONGs'},
+    {category:'GOVERNANÇA',title:'Auditoria',note:'Prévia sem histórico real',module:'Segurança e auditoria'}
+  ]
+};
+function openQuick(index){
+  const action=quickByRole[activeRole][index];
+  if(!action)return;
+  if(action.href){location.href=action.href;return;}
+  const moduleIndex=roles[activeRole].modules.findIndex(([title])=>title===action.module);
+  if(moduleIndex>=0)openModule(moduleIndex);
+}
+function renderLearningSnapshot(){
+  const target=$('#learningSnapshot');
+  if(['empresa','admin'].includes(activeRole)){target.hidden=true;return;}
+  target.hidden=false;
+  let progress={};try{progress=JSON.parse(sessionStorage.getItem('ponteDemoProgress')||'{}');}catch{}
+  const started=Object.entries(progress).filter(([,state])=>state.started);
+  const completed=started.reduce((total,[,state])=>total+(state.completed||[]).length,0);
+  const next=started.find(([,state])=>(state.completed||[]).length<3);
+  const journey=window.PONTE_JOURNEYS?.find(item=>item.id===next?.[0]);
+  target.innerHTML=`<div><span class="eyebrow">APRENDIZAGEM</span><strong>${started.length?`${started.length} ${started.length===1?'jornada iniciada':'jornadas iniciadas'}`:'Sua primeira jornada começa aqui'}</strong><p>${started.length?`${completed} etapas concluídas nesta sessão${journey?` · Próxima: ${escapeHtml(journey.title)}`:''}.`:'Explore os temas disponíveis no Oncoflix.'}</p></div><a href="oncoflix.html">${started.length?'Continuar no Oncoflix':'Conhecer jornadas'} ↗</a>`;
 }
 function renderDashboard(){
   const profile=currentProfile(), config=roles[activeRole];
-  $('#authView').hidden=true; $('#dashboardView').hidden=false; $('#logoutButton').hidden=false;
-  $('#welcomeTitle').textContent=config.title;
-  $('#welcomeText').textContent=config.intro;
+  $('#authView').hidden=true; $('#dashboardView').hidden=false; $('#accountMenu').hidden=false;
+  $('#welcomeTitle').textContent=`Olá, ${account.name.split(' ')[0]}!`;
+  $('#welcomeText').textContent=`Seu espaço como ${activeRole==='ong'?'ONG ou organização':config.name.toLowerCase()}.`;
   $('#accountName').textContent=account.name;
   $('#accountEmail').textContent=account.email;
   $('#profileSelect').innerHTML=account.profiles.map(item=>`<option value="${item.role}">${escapeHtml(roles[item.role].name)}${item.institution?' · '+escapeHtml(item.institution):''}</option>`).join('');
   $('#profileSelect').value=activeRole;
-  $('#profileLevel').textContent='Básico';
-  $('#profileStatusText').textContent='Dados complementares em rascunho nesta aba';
+  const filled=Object.values(profile.data||{}).filter(Boolean).length;
+  $('#profileLevel').textContent=filled?'Perfil em rascunho':'Conta criada';
+  $('#profileStatusText').textContent=filled?`${filled} ${filled===1?'informação preenchida':'informações preenchidas'} nesta aba`:'Informações complementares pendentes';
   $('#profileVisibility').textContent=config.visibility;
   $('#profileNext').textContent=config.next;
   $('#profileNextDetail').textContent=config.nextDetail;
-  $('#panelTitle').textContent=profile.institution||config.name;
-  $('#panelIntro').textContent=config.intro;
+  $('#panelTitle').textContent=profile.institution||'O que você deseja fazer?';
+  $('#panelIntro').textContent=profile.institution?`O que você deseja fazer no espaço da ${profile.institution}?`:'';
   $('#dashboardView').dataset.role=activeRole;
-  renderFeature();
-  $('#moduleGrid').innerHTML=config.modules.map(([title,description],index)=>`<button type="button" class="module-card" data-module="${index}"><span class="module-number">${String(index+1).padStart(2,'0')}</span><strong>${escapeHtml(title)}</strong><span>${escapeHtml(description)}</span><small>${/^(Meu perfil|Minha marca|Atualizar informações)/.test(title)?'Preencher rascunho':'Explorar área'} ↗</small></button>`).join('');
+  const actions=quickByRole[activeRole];
+  $('#quickActions').innerHTML=actions.map((action,index)=>`<button type="button" class="quick-action" data-quick="${index}"><span>${escapeHtml(action.category)}</span><strong>${escapeHtml(action.title)}</strong><small>${escapeHtml(action.note)}</small><b aria-hidden="true">↗</b></button>`).join('');
+  $('#roleNav').innerHTML=actions.slice(0,4).map((action,index)=>`<button type="button" data-quick="${index}">${escapeHtml(action.title)}</button>`).join('');
+  $('#moduleGrid').innerHTML=config.modules.map(([title,description],index)=>`<button type="button" class="module-row" data-module="${index}"><strong>${escapeHtml(title)}</strong><span>${escapeHtml(description)}</span><b aria-hidden="true">↗</b></button>`).join('');
+  renderLearningSnapshot();
   $('#accessNote').textContent=config.access;
   sessionStorage.setItem('ponteDemoSession',JSON.stringify({name:account.name,email:account.email,profiles:account.profiles,demo:account.demo,activeRole}));
   location.hash='meu-espaco';
@@ -205,20 +270,41 @@ $('#newProfileRole').innerHTML=roleOptions(personalRoles);
 $('#demoAccount').innerHTML+='<option value="multiperfil@ponte.test">Conta com dois perfis</option>'+Object.entries(roles).map(([id,role])=>`<option value="${id==='admin'?'admin':id}@ponte.test">${escapeHtml(role.name)}</option>`).join('');
 $('#demoAccount').addEventListener('change',event=>{if(!event.target.value)return;$('#loginEmail').value=event.target.value;$('#loginPassword').value=DEMO_PASSWORD;clearErrors();});
 $('#registerRole').addEventListener('change',event=>institutionField(event.target.value,'registerRoleFields'));
+$('#registerNext1').addEventListener('click',()=>{
+  clearErrors();
+  const fields=['registerName','registerEmail','registerPassword','registerRole'].map(id=>$('#'+id));
+  const invalid=fields.find(field=>!field.checkValidity());
+  if(invalid){invalid.reportValidity();return;}
+  const email=$('#registerEmail').value.trim().toLowerCase();
+  if([...demoAccounts,...createdAccounts].some(item=>item.email===email))return showError('registerError','Este e-mail já está em uso nesta demonstração. Entre com a conta ou use outro e-mail.');
+  showRegisterStep(2);
+});
+$('#registerNext2').addEventListener('click',()=>{
+  clearErrors();
+  const institution=$('#registerRoleFields input');
+  if(institution&&!institution.checkValidity()){institution.reportValidity();return;}
+  const role=$('#registerRole').value;
+  $('#registerReview').textContent=`Conta de teste para ${$('#registerName').value.trim()}, com perfil ${role==='ong'?'ONG ou organização':roles[role].name.toLowerCase()}. Você poderá adicionar outros perfis depois.`;
+  showRegisterStep(3);
+});
+document.querySelectorAll('[data-register-back]').forEach(button=>button.addEventListener('click',()=>showRegisterStep(Number(button.dataset.registerBack))));
 $('#newProfileRole').addEventListener('change',event=>institutionField(event.target.value,'newProfileFields'));
 $('#loginForm').addEventListener('submit',event=>{event.preventDefault();clearErrors();login($('#loginEmail').value,$('#loginPassword').value);});
 $('#registerForm').addEventListener('submit',event=>{
   event.preventDefault();clearErrors();
+  if(currentRegisterStep!==3)return;
   const email=$('#registerEmail').value.trim().toLowerCase(),name=$('#registerName').value.trim(),password=$('#registerPassword').value,role=$('#registerRole').value;
   if(!role)return showError('registerError','Escolha seu primeiro perfil.');
   if([...demoAccounts,...createdAccounts].some(item=>item.email===email))return showError('registerError','Este e-mail já está em uso nesta demonstração. Entre com a conta ou use outro e-mail.');
   if(password.length<8)return showError('registerError','Use uma senha de teste com pelo menos 8 caracteres.');
   const institution=($('#registerRoleFields input')?.value||'').trim();
   if((role==='ong'||role==='empresa')&&!institution)return showError('registerError','Informe o nome da organização ou empresa.');
-  const created={email,name,password,profiles:[{role,data:{},institution}],demo:false};
+  const data={interesses:$('#registerInterests').value.trim(),participacao:$('#registerParticipation').value.trim()};
+  const created={email,name,password,profiles:[{role,data,institution}],demo:false};
   sessionStorage.removeItem('ponteDemoProgress');createdAccounts.push(created);account=created;activeRole=role;renderDashboard();
 });
 $('#profileSelect').addEventListener('change',event=>{activeRole=event.target.value;renderDashboard();});
+for(const selector of ['#quickActions','#roleNav'])$(selector).addEventListener('click',event=>{const button=event.target.closest('[data-quick]');if(button)openQuick(Number(button.dataset.quick));});
 $('#moduleGrid').addEventListener('click',event=>{const button=event.target.closest('[data-module]');if(button)openModule(Number(button.dataset.module));});
 $('#moduleContent').addEventListener('submit',event=>{
   if(event.target.id!=='profileEditForm')return;
@@ -236,7 +322,7 @@ $('#addProfileForm').addEventListener('submit',event=>{
   if((role==='ong'||role==='empresa')&&!institution)return showError('addProfileError','Informe o nome da organização ou empresa.');
   account.profiles.push({role,data:{},institution});activeRole=role;$('#profileDialog').close();renderDashboard();
 });
-$('#logoutButton').addEventListener('click',()=>{account=null;activeRole=null;createdAccounts.length=0;sessionStorage.removeItem('ponteDemoSession');sessionStorage.removeItem('ponteDemoProgress');$('#dashboardView').hidden=true;$('#authView').hidden=false;$('#logoutButton').hidden=true;$('#loginForm').reset();$('#registerForm').reset();$('#demoAccount').value='';showTab('login');window.scrollTo({top:0,behavior:'instant'});});
+$('#logoutButton').addEventListener('click',()=>{account=null;activeRole=null;createdAccounts.length=0;sessionStorage.removeItem('ponteDemoSession');sessionStorage.removeItem('ponteDemoProgress');$('#dashboardView').hidden=true;$('#authView').hidden=false;$('#accountMenu').hidden=true;$('#accountMenu').open=false;$('#loginForm').reset();$('#registerForm').reset();$('#demoAccount').value='';showRegisterStep(1);showTab('login');window.scrollTo({top:0,behavior:'instant'});});
 $('#closeModule').addEventListener('click',()=>$('#moduleDialog').close());
 $('#closeProfile').addEventListener('click',()=>$('#profileDialog').close());
 for(const dialog of document.querySelectorAll('dialog'))dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
