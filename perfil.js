@@ -1,6 +1,6 @@
 const data=window.PONTE_PUBLIC;
 const params=new URLSearchParams(location.search),type=params.get('tipo'),id=params.get('id');
-const collections={ong:data.ongs,empreendedora:data.empreendedoras,profissional:data.profissionais};
+const collections={ong:data.ongs.filter(entry=>entry.publicationStatus==='approved'&&entry.publicConsent===true),empreendedora:data.empreendedoras,profissional:data.profissionais};
 const item=collections[type]?.find(entry=>entry.id===id);
 const $=selector=>document.querySelector(selector);
 const esc=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));

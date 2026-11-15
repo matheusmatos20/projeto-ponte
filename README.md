@@ -1,20 +1,20 @@
 # Projeto Ponte — protótipo navegável
 
-Protótipo do Projeto Ponte, iniciativa do Portal VPM, atualizado conforme os Documentos 1, 2 e 4, o trecho recebido do Documento 3 e o relatório de revisão cruzada. Os documentos de origem não são publicados neste repositório.
+Protótipo do Projeto Ponte, iniciativa do Portal VPM, atualizado conforme os Documentos 1, 2, 4 e 5, o trecho recebido do Documento 3 e o relatório de revisão cruzada. Os documentos de origem não são publicados neste repositório.
 
 ## O que esta versão demonstra
 
 | Área | Fluxo disponível |
 | --- | --- |
-| Página inicial | Apresentação, quatro pilares, Oncoflix, diretório de ONGs, vitrines de empreendedoras e profissionais, projetos e parceiros |
-| Diretório de ONGs | Busca por texto e filtros de estado, região, cidade, abrangência, público, área, apoio e serviço; página institucional individual |
+| Página inicial | Abertura editorial, caminhos de acesso, quatro pilares, Oncoflix, busca de apoio, vitrines e participação |
+| Diretório de ONGs | Descoberta guiada por necessidades, termos semelhantes, localização e filtros complementares; resultados apenas de organizações autorizadas |
 | Vitrines | Cartões de empreendedoras e profissionais com páginas individuais; fichas de produto ou serviço no perfil empreendedor |
 | Conexão mediada | Formulário demonstrativo na página da ONG, sem envio de dados |
 | Conta | Login central, cadastro básico, inclusão e troca de perfis |
 | Painéis | Experiências e atalhos específicos para sete tipos de participante e administração VPM |
 | Oncoflix | Descoberta visual, coleções, página individual da jornada, acesso por perfil, progresso e retomada demonstrativos |
 
-Pacientes, familiares e comunicadores **não** têm diretório ou vitrine pública. O diagnóstico institucional da ONG permanece fora da página pública. Nenhum perfil, projeto, produto, curso ou parceiro real está publicado. Nomes, cidades e serviços dos registros de exemplo são fictícios e estão identificados como demonstração.
+Pacientes, familiares e comunicadores **não** têm diretório ou vitrine pública. O diagnóstico institucional da ONG permanece fora da página pública. Nenhuma ONG aparece no diretório até haver dados reais, autorização e revisão. Nenhum perfil, projeto, produto, curso ou parceiro real está publicado. As vitrines e jornadas de exemplo são fictícias e estão identificadas como demonstração. A fotografia da página inicial é ilustrativa e não retrata participantes do projeto.
 
 ## Acesso de teste
 
