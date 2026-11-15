@@ -1,6 +1,7 @@
 const data=window.PONTE_PUBLIC;
 const params=new URLSearchParams(location.search),type=params.get('tipo'),id=params.get('id');
-const collections={ong:data.ongs.filter(entry=>entry.publicationStatus==='approved'&&entry.publicConsent===true),empreendedora:data.empreendedoras,profissional:data.profissionais};
+const publishable=entry=>entry.demo===true||(entry.publicationStatus==='approved'&&entry.publicConsent===true);
+const collections={ong:data.ongs.filter(entry=>entry.publicationStatus==='approved'&&entry.publicConsent===true),empreendedora:data.empreendedoras.filter(publishable),profissional:data.profissionais.filter(publishable)};
 const item=collections[type]?.find(entry=>entry.id===id);
 const $=selector=>document.querySelector(selector);
 const esc=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -10,7 +11,7 @@ else{
   const label=type==='ong'?'ONG · PÁGINA INSTITUCIONAL':type==='empreendedora'?'EMPREENDEDORA · VITRINE':'PROFISSIONAL DA SAÚDE · VITRINE';
   const title=type==='empreendedora'?item.brand:item.name;
   document.title=title+' | Projeto Ponte';
-  $('#backLink').href=type==='ong'?'index.html#ongs':type==='empreendedora'?'index.html#empreendedoras':'index.html#profissionais';
+  $('#backLink').href=type==='ong'?'index.html#ongs':type==='empreendedora'?'empreendedores.html':'profissionais.html';
   let fields='';let body='';
   if(type==='ong'){
     fields=field('Público atendido',item.audience)+field('Área de atuação',item.area)+field('Tipos de apoio',item.support)+field('Serviços e atividades',item.services)+field('Localização da sede',`${item.city}/${item.state}`)+field('Abrangência do atendimento',item.reach);

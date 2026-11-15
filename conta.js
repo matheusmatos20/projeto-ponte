@@ -219,6 +219,10 @@ function renderLearningSnapshot(){
   target.innerHTML=`<div><span class="eyebrow">APRENDIZAGEM</span><strong>${started.length?`${started.length} ${started.length===1?'jornada iniciada':'jornadas iniciadas'}`:'Sua primeira jornada começa aqui'}</strong><p>${started.length?`${completed} etapas concluídas nesta sessão${journey?` · Próxima: ${escapeHtml(journey.title)}`:''}.`:'Explore os temas disponíveis no Oncoflix.'}</p></div><a href="oncoflix.html">${started.length?'Continuar no Oncoflix':'Conhecer jornadas'} ↗</a>`;
 }
 function renderDashboard(){
+  if(activeRole==='admin'){
+    sessionStorage.setItem('ponteDemoSession',JSON.stringify({name:account.name,email:account.email,profiles:account.profiles,demo:account.demo,activeRole}));
+    location.href='admin.html';return;
+  }
   const profile=currentProfile(), config=roles[activeRole];
   $('#authView').hidden=true; $('#dashboardView').hidden=false; $('#accountMenu').hidden=false;
   $('#welcomeTitle').textContent=`Olá, ${account.name.split(' ')[0]}!`;
@@ -267,7 +271,7 @@ $('#loginTab').addEventListener('click',()=>showTab('login'));
 $('#registerTab').addEventListener('click',()=>showTab('register'));
 $('#registerRole').innerHTML=roleOptions(personalRoles);
 $('#newProfileRole').innerHTML=roleOptions(personalRoles);
-$('#demoAccount').innerHTML+='<option value="multiperfil@ponte.test">Conta com dois perfis</option>'+Object.entries(roles).map(([id,role])=>`<option value="${id==='admin'?'admin':id}@ponte.test">${escapeHtml(role.name)}</option>`).join('');
+$('#demoAccount').innerHTML+='<option value="multiperfil@ponte.test">Conta com dois perfis</option>'+Object.entries(roles).filter(([id])=>id!=='admin').map(([id,role])=>`<option value="${id}@ponte.test">${escapeHtml(role.name)}</option>`).join('');
 $('#demoAccount').addEventListener('change',event=>{if(!event.target.value)return;$('#loginEmail').value=event.target.value;$('#loginPassword').value=DEMO_PASSWORD;clearErrors();});
 $('#registerRole').addEventListener('change',event=>institutionField(event.target.value,'registerRoleFields'));
 $('#registerNext1').addEventListener('click',()=>{

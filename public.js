@@ -8,11 +8,16 @@ const needs=[
   {name:'Apoio à família',terms:['familia','familiar','cuidador']},
   {name:'Acolhimento',terms:['acolhimento','escuta','acolher']},
   {name:'Apoio psicológico',terms:['psicologia','psicologo','saúde mental','emocional']},
+  {name:'Apoio social',terms:['assistencia social','serviço social','assistente social']},
   {name:'Doação de perucas',terms:['peruca','cabelo']},
   {name:'Próteses e acessórios',terms:['protese','acessorio']},
   {name:'Assistência jurídica',terms:['juridico','advogado','direito']},
+  {name:'Orientação sobre direitos',terms:['direitos','benefícios','orientacao juridica']},
   {name:'Hospedagem e transporte',terms:['hospedagem','transporte','deslocamento']},
   {name:'Atividades e reabilitação',terms:['atividade','reabilitacao','fisioterapia']},
+  {name:'Atividades físicas',terms:['atividade física','exercicio','movimento']},
+  {name:'Grupos de apoio',terms:['grupo','roda de conversa','encontro']},
+  {name:'Educação em saúde',terms:['informação','educacao','conteudo educativo']},
   {name:'Direitos e benefícios',terms:['direitos','beneficio','auxilio']}
 ];
 const filters=[['ngoState','state'],['ngoCity','city'],['ngoReach','reach'],['ngoAudience','audience'],['ngoArea','area'],['ngoSupport','support'],['ngoService','services']];
@@ -69,19 +74,18 @@ function renderOngs(){
   if(locationMode!=='brasil')chips.push({label:locationMode==='online'?'Atendimento online':region||'Minha região',remove:()=>document.querySelector('[data-location="brasil"]').click()});
   $('#activeNgoFilters').replaceChildren(...chips.map(chip=>{const button=document.createElement('button');button.type='button';button.textContent=`${chip.label} ×`;button.setAttribute('aria-label',`Remover filtro ${chip.label}`);button.addEventListener('click',chip.remove);return button;}));
 }
-$('#entrepreneurShowcase').innerHTML=empreendedoras.map((item,index)=>`<article class="showcase-card"><div class="showcase-art art-${index+1}" aria-hidden="true"><span>${String(index+1).padStart(2,'0')}</span><i>✳</i></div><div class="showcase-body"><small>EXEMPLO FICTÍCIO · ${escapeHtml(item.category.toUpperCase())}</small><h3>${escapeHtml(item.brand)}</h3><p>${escapeHtml(item.summary)}</p><a href="perfil.html?tipo=empreendedora&id=${encodeURIComponent(item.id)}">Ver página de exemplo ↗</a></div></article>`).join('');
-$('#professionalShowcase').innerHTML=profissionais.map((item,index)=>`<article class="showcase-card"><div class="showcase-art professional-art art-${index+1}" aria-hidden="true"><span>${String(index+1).padStart(2,'0')}</span><i>◌</i></div><div class="showcase-body"><small>EXEMPLO FICTÍCIO · ${escapeHtml(item.profession.toUpperCase())}</small><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.summary)}</p><a href="perfil.html?tipo=profissional&id=${encodeURIComponent(item.id)}">Ver página de exemplo ↗</a></div></article>`).join('');
 $('#homeJourneys').innerHTML=window.PONTE_JOURNEYS.slice(0,3).map(item=>`<a class="home-journey ${escapeHtml(item.color)}" href="oncoflix.html?jornada=${encodeURIComponent(item.id)}"><small>JORNADA DE EXEMPLO · ${escapeHtml(item.category.toUpperCase())}</small><strong>${escapeHtml(item.title)}</strong><span>Conhecer a jornada ↗</span></a>`).join('');
 const discoveryItems=[
   {title:'Organizações de apoio',kind:'Diretório',href:'#ongs',terms:'ong organização apoio acolhimento família transporte direitos psicologia peruca'},
-  {title:'Profissionais de saúde',kind:'Vitrines demonstrativas',href:'#profissionais',terms:'profissional especialista saúde psicologia nutrição'},
+  {title:'Profissionais de saúde',kind:'Vitrine Ponte · demonstração',href:'profissionais.html',terms:'profissional especialista saúde psicologia nutrição'},
+  {title:'Empreendedores',kind:'Vitrine Ponte · demonstração',href:'empreendedores.html',terms:'negócio empreendedor produto serviço'},
   {title:'Oncoflix',kind:'Jornadas demonstrativas',href:'oncoflix.html',terms:'aprender curso aula educação conhecimento jornada conteúdo'},
-  {title:'Participar de iniciativas',kind:'Projetos ainda não publicados',href:'#participar',terms:'participar iniciativa projeto campanha conexão oportunidade'},
+  {title:'Projetos e iniciativas',kind:'Vitrine Ponte · demonstração',href:'projetos.html',terms:'participar iniciativa projeto campanha conexão oportunidade'},
   ...window.PONTE_JOURNEYS.map(item=>({title:item.title,kind:'Jornada de exemplo',href:`oncoflix.html?jornada=${encodeURIComponent(item.id)}`,terms:[item.category,item.audience,item.summary].join(' ')}))
 ];
 function renderGlobalSearch(){
   const term=normalize($('#globalSearch').value.trim());
-  const matches=(term?discoveryItems.filter(item=>normalize([item.title,item.terms].join(' ')).includes(term)):discoveryItems.slice(0,4)).slice(0,6);
+  const matches=(term?discoveryItems.filter(item=>normalize([item.title,item.terms].join(' ')).includes(term)):discoveryItems.slice(0,5)).slice(0,6);
   $('#globalResults').innerHTML=matches.length?matches.map(item=>`<a href="${escapeHtml(item.href)}"><span>${escapeHtml(item.kind)}</span><strong>${escapeHtml(item.title)}</strong><b aria-hidden="true">↗</b></a>`).join(''):'<p>Não encontramos esse termo. Tente uma palavra mais geral ou escolha uma das áreas abaixo.</p>';
 }
 $('#globalSearch').addEventListener('input',renderGlobalSearch);
