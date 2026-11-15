@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#174c49">
+  <meta name="description" content="Encontre ONGs e instituições de apoio oncológico em todo o Brasil pelo serviço que procura.">
+  <title>Organizações de apoio oncológico | Projeto Ponte</title>
+  <link rel="icon" href="assets/ponte-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="identity.css"><link rel="stylesheet" href="directory.css">
+  <script defer src="public-data.js?v=20261115"></script><script defer src="directory.js"></script>
+</head>
+<body class="directory-page">
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a><div class="prototype-bar">Diretório em preparação · Sem organizações reais publicadas</div>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html#inicio"><img class="brand-mark" src="assets/ponte-mark.svg" alt=""><span><strong>ponte</strong><small>um projeto do Portal VPM</small></span></a><nav class="directory-nav" aria-label="Navegação"><a href="index.html">Início</a><a href="oncoflix.html">Aprender</a><a href="vitrine.html">Vitrine</a><a class="directory-enter" href="conta.html#entrar">Entrar</a></nav></div></header>
+  <main id="conteudo">
+    <section class="directory-intro"><div class="shell"><span class="eyebrow">DIRETÓRIO DE ORGANIZAÇÕES</span><h1>Encontre organizações de apoio oncológico em todo o Brasil.</h1><p>Conheça ONGs e instituições que oferecem serviços, acolhimento, orientação e iniciativas de apoio a pacientes, familiares e pessoas impactadas pelo câncer.</p></div></section>
+    <section class="shell directory-workspace" aria-labelledby="servicesTitle">
+      <div class="directory-guide"><span class="eyebrow">COMECE PELO SERVIÇO</span><h2 id="servicesTitle">Quais serviços você gostaria de encontrar?</h2><p>Escolha uma ou mais opções. Você também pode ver as organizações disponíveis sem selecionar nenhuma.</p></div>
+      <div id="serviceCategories" class="service-categories" role="group" aria-label="Serviços de apoio oncológico"></div>
+      <div class="directory-location"><div><h2>Onde você gostaria de encontrar uma organização?</h2><p>A busca é nacional. Estado e município são filtros opcionais.</p></div><div class="location-fields"><label for="orgState">Estado <select id="orgState"><option value="">Todo o Brasil</option></select></label><label for="orgCity">Município <input id="orgCity" type="search" placeholder="Qualquer município" autocomplete="address-level2"></label></div></div>
+      <details class="directory-more"><summary>Mais opções de pesquisa</summary><div class="extra-fields"><label for="orgName">Nome da organização <input id="orgName" type="search" placeholder="Nome, se souber"></label><label for="orgArea">Área de atuação <select id="orgArea"><option value="">Todas as áreas</option></select></label><label for="orgAudience">Público atendido <select id="orgAudience"><option value="">Todos os públicos</option></select></label><label for="orgReach">Abrangência <select id="orgReach"><option value="">Todas</option></select></label></div></details>
+      <div class="directory-result-head"><div><span class="eyebrow">RESULTADOS</span><h2>Organizações disponíveis</h2><p id="orgCount" role="status"></p></div><button id="clearOrgFilters" type="button">Limpar filtros</button></div>
+      <div id="orgResults" class="organization-results" aria-live="polite"></div>
+      <p class="directory-caveat">Os serviços exibidos dependem das informações cadastradas, autorizadas e validadas. A avaliação interna das organizações não aparece no diretório.</p>
+    </section>
+  </main>
+  <footer class="directory-footer"><div class="shell"><span>Projeto Ponte · Portal VPM</span><nav aria-label="Rodapé"><a href="index.html">Início</a><a href="informacoes.html#privacidade">Privacidade</a><a href="informacoes.html#termos">Termos</a><a href="informacoes.html#contato">Contato</a></nav></div></footer>
+</body>
+</html>

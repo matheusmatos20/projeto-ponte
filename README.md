@@ -6,8 +6,8 @@ Protótipo do Projeto Ponte, iniciativa do Portal VPM, atualizado conforme os Do
 
 | Área | Fluxo disponível |
 | --- | --- |
-| Página inicial | Posicionamento oficial, acesso direto a organizações, Oncoflix, Vitrine Ponte e participação |
-| Diretório de ONGs | Descoberta guiada por necessidades, termos semelhantes, localização e filtros complementares; resultados apenas de organizações autorizadas |
+| Página inicial | Posicionamento oficial e dois caminhos principais: aprender sobre o câncer e encontrar organizações de apoio; Vitrine Ponte em posição secundária |
+| Diretório de ONGs | Página própria com categorias de serviço selecionáveis, busca nacional, filtros opcionais de localização e resultados apenas de organizações autorizadas e validadas |
 | Vitrine Ponte | Página própria e categorias separadas de profissionais, empreendedores e projetos; perfis e projeto de demonstração com páginas individuais |
 | Conexão mediada | Formulário demonstrativo na página da ONG, sem envio de dados |
 | Conta | Login central, cadastro básico, inclusão e troca de perfis |
@@ -15,7 +15,7 @@ Protótipo do Projeto Ponte, iniciativa do Portal VPM, atualizado conforme os Do
 | Oncoflix | Descoberta visual, coleções, página individual da jornada, acesso por perfil, progresso e retomada demonstrativos |
 | Administração | Ambiente demonstrativo separado da navegação pública e dos painéis comuns; sem proteção de servidor nesta versão |
 
-A página inicial usa a definição aprovada: **uma plataforma de conexões e ensino na causa do câncer**. A Vitrine Ponte fica em área própria; empresas aparecem apenas em um acesso discreto no rodapé. A busca pública, o cadastro em três etapas e os painéis por perfil continuam disponíveis. As funções sem dados reais são identificadas como prévias.
+A página inicial usa a definição aprovada: **uma plataforma de conexões e ensino na causa do câncer**. Os dois caminhos principais levam diretamente ao Oncoflix e ao diretório nacional de organizações. A Vitrine Ponte fica em área própria; empresas aparecem apenas em um acesso discreto no rodapé. O cadastro em três etapas e os painéis por perfil continuam disponíveis. As funções sem dados reais são identificadas como prévias.
 
 Pacientes, familiares e comunicadores **não** têm diretório ou vitrine pública. O diagnóstico institucional da ONG permanece fora da página pública. Nenhuma ONG aparece no diretório até haver dados reais, autorização e revisão. Nenhum perfil, projeto, produto, curso ou parceiro real está publicado. As vitrines e jornadas de exemplo são fictícias e estão identificadas como demonstração. A fotografia da página inicial é ilustrativa e não retrata participantes do projeto.
 
