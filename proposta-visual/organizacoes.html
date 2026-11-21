@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proposta visual · Organizações | Projeto Ponte</title>
+  <link rel="icon" href="../assets/ponte-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="design.css">
+  <script defer src="../public-data.js"></script><script defer src="../directory.js"></script><script defer src="proposal.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="demo-strip">Proposta visual para avaliação · Conteúdo demonstrativo — dados fictícios, utilizados exclusivamente para apresentação do protótipo.</div>
+  <header class="site-header"><div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Projeto Ponte, início"><img src="../assets/ponte-mark.svg" alt=""><span><strong>ponte</strong><small>um projeto do Portal VPM</small></span></a>
+    <button class="menu-toggle" type="button" aria-controls="mainNav" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
+    <nav class="main-nav" id="mainNav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="../oncoflix.html">Aprender sobre o câncer</a><a class="current" href="organizacoes.html" aria-current="page">Organizações</a><a href="../vitrine.html">Vitrine Ponte</a><a class="button button-sm" href="../conta.html#entrar">Entrar / Criar conta <span aria-hidden="true">↗</span></a></nav>
+  </div></header>
+  <main id="conteudo">
+    <section class="directory-hero"><div class="container directory-hero-grid"><div><p class="eyebrow"><span class="eyebrow-line"></span> ENCONTRE APOIO</p><h1>Organizações para conhecer, caminhos para explorar.</h1><p>Pesquise por serviço, localização e público atendido. Os perfis abaixo são fictícios e mostram como a busca poderá funcionar.</p></div><div class="directory-hero-art" role="img" aria-label="Composição gráfica discreta de arcos que se encontram"><span class="art-orbit orbit-one"></span><span class="art-orbit orbit-two"></span><span class="art-dot"></span><strong>Pessoas e iniciativas mais próximas.</strong></div></div></section>
+    <section class="directory-search" aria-labelledby="searchTitle"><div class="container"><div class="search-panel"><div class="search-panel-head"><div><p class="eyebrow">BUSCA DE DEMONSTRAÇÃO</p><h2 id="searchTitle">O que você procura?</h2></div><p>Comece pelo serviço ou escolha uma região. Todos os filtros são opcionais.</p></div>
+      <div class="search-row"><label for="orgName">Nome da organização<input id="orgName" type="search" placeholder="Ex.: Instituto Horizonte"></label><label for="orgState">Estado<select id="orgState"><option value="">Todo o Brasil</option></select></label><label for="orgCity">Município<input id="orgCity" type="search" placeholder="Qualquer município"></label></div>
+      <div class="filter-heading"><strong>Filtrar por serviço</strong><span>Selecione uma ou mais opções</span></div><div id="serviceCategories" class="service-categories" role="group" aria-label="Serviços de apoio oncológico"></div>
+      <details class="more-filters"><summary>Mais filtros <span aria-hidden="true">＋</span></summary><div class="extra-fields"><label for="orgArea">Área de atuação<select id="orgArea"><option value="">Todas as áreas</option></select></label><label for="orgAudience">Público atendido<select id="orgAudience"><option value="">Todos os públicos</option></select></label><label for="orgReach">Abrangência<select id="orgReach"><option value="">Todas</option></select></label></div></details>
+    </div></div></section>
+    <section class="results-section"><div class="container"><div class="results-heading"><div><p class="eyebrow">RESULTADOS</p><h2>Organizações</h2><p id="orgCount" role="status"></p></div><button id="clearOrgFilters" class="clear-button" type="button">Limpar filtros <span aria-hidden="true">×</span></button></div><div id="orgResults" class="organization-results" aria-live="polite"></div><p class="results-note">Os perfis e serviços nesta página são fictícios. Não representam oferta real de atendimento.</p></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid"><div><a class="brand footer-brand" href="index.html"><img src="../assets/ponte-mark.svg" alt=""><span><strong>ponte</strong><small>um projeto do Portal VPM</small></span></a><p>Conexão, educação e desenvolvimento na causa do câncer.</p></div><nav aria-label="Explorar"><strong>Explore</strong><a href="../oncoflix.html">Aprender sobre o câncer</a><a href="organizacoes.html">Organizações</a><a href="../vitrine.html">Vitrine Ponte</a></nav><nav aria-label="Informações"><strong>Informações</strong><a href="../informacoes.html#privacidade">Privacidade</a><a href="../informacoes.html#termos">Termos de uso</a><a href="../informacoes.html#contato">Contato</a></nav><div class="vpm-sign"><img src="../assets/logo-vpm-roxo.png" alt="Portal VPM"></div></div><div class="container footer-base">Projeto Ponte · Portal VPM <span>Proposta visual · dados fictícios</span></div></footer>
+</body>
+</html>
