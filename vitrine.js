@@ -11,7 +11,7 @@ function card(item,index){
   const name=page==='profissionais'?item.name:page==='empreendedores'?item.brand:item.name;
   const summary=page==='projetos'?item.description:item.summary;
   const href=page==='projetos'?`projeto.html?id=${encodeURIComponent(item.id)}`:`perfil.html?tipo=${page==='profissionais'?'profissional':'empreendedora'}&id=${encodeURIComponent(item.id)}`;
-  return `<article class="vitrine-item"><div class="vitrine-item-art" aria-hidden="true"><span>${String(index+1).padStart(2,'0')}</span><i>${page==='projetos'?'↗':page==='profissionais'?'◌':'✳'}</i></div><div class="vitrine-item-copy"><small>${item.demo?'EXEMPLO FICTÍCIO':'PERFIL AUTORIZADO'} · ${escapeHtml(kind)}</small><h2>${escapeHtml(name)}</h2><p>${escapeHtml(summary)}</p><a href="${href}">${page==='projetos'?'Ver modelo do projeto':'Conhecer página de exemplo'} ↗</a></div></article>`;
+  return `<article class="vitrine-item"><div class="vitrine-item-art" role="img" aria-label="Ilustração abstrata para o perfil de demonstração"><span>${String(index+1).padStart(2,'0')}</span><i>${page==='projetos'?'↗':page==='profissionais'?'◌':'✳'}</i></div><div class="vitrine-item-copy"><small>${item.demo?'EXEMPLO FICTÍCIO':'PERFIL AUTORIZADO'} · ${escapeHtml(kind)}</small><h2>${escapeHtml(name)}</h2><p>${escapeHtml(summary)}</p>${item.city?`<p class="vitrine-location">${escapeHtml(item.city)} / ${escapeHtml(item.state)}</p>`:''}<a href="${href}">${page==='projetos'?'Ver modelo do projeto':'Conhecer página de exemplo'} ↗</a></div></article>`;
 }
 if(page==='projeto'){
   const id=new URLSearchParams(location.search).get('id');

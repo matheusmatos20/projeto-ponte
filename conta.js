@@ -1,6 +1,14 @@
 // Somente dados demonstrativos. Nenhuma credencial ou permissão deste arquivo é real.
 const DEMO_PASSWORD = 'PonteDemo2026!';
 const roles = {
+  aprendiz: {
+    name: 'Pessoa interessada em aprender', title: 'Seu espaço de aprendizagem',
+    intro: 'Explore jornadas e acompanhe seu progresso nesta demonstração.',
+    next: 'Escolher uma jornada', nextDetail: 'Você pode começar por qualquer tema.',
+    visibility: 'Perfil privado', access: 'Seu progresso fica apenas nesta sessão de demonstração.',
+    fields: [['interesses','Temas de interesse']],
+    modules: [['Meu Oncoflix','Acesse as jornadas demonstrativas.'],['Meu perfil','Guarde seus interesses nesta aba.']]
+  },
   paciente: {
     name: 'Paciente ou sobrevivente', title: 'Seu espaço no Ponte',
     intro: 'Acompanhe conteúdos, jornadas e iniciativas disponíveis para a sua participação.',
@@ -105,6 +113,7 @@ const doc4Modules = {
 for(const [id,modules] of Object.entries(doc4Modules))roles[id].modules=modules;
 
 const demoAccounts = [
+  ['aprendiz@ponte.test','Participante de aprendizagem',['aprendiz']],
   ['paciente@ponte.test','Paciente ou sobrevivente',['paciente']],
   ['familiar@ponte.test','Familiar ou rede de apoio',['familiar']],
   ['profissional@ponte.test','Profissional da saúde',['profissional']],
@@ -222,6 +231,11 @@ function renderDashboard(){
   if(activeRole==='admin'){
     sessionStorage.setItem('ponteDemoSession',JSON.stringify({name:account.name,email:account.email,profiles:account.profiles,demo:account.demo,activeRole}));
     location.href='admin.html';return;
+  }
+  if(['aprendiz','paciente','familiar','ong','profissional','empreendedora','empresa'].includes(activeRole)){
+    sessionStorage.setItem('ponteDemoSession',JSON.stringify({name:account.name,email:account.email,profiles:account.profiles,demo:account.demo,activeRole}));
+    location.href=`area.html?perfil=${encodeURIComponent(activeRole)}`;
+    return;
   }
   const profile=currentProfile(), config=roles[activeRole];
   $('#authView').hidden=true; $('#dashboardView').hidden=false; $('#accountMenu').hidden=false;

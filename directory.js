@@ -1,4 +1,4 @@
-const organizations=window.PONTE_PUBLIC.ongs.filter(item=>item.publicationStatus==='approved'&&item.publicConsent===true);
+const organizations=window.PONTE_PUBLIC.ongs.filter(item=>item.demo===true||(item.publicationStatus==='approved'&&item.publicConsent===true));
 const categories=[
   {id:'apoio-psicologico',name:'Apoio psicológico',terms:['apoio psicológico','psicologia','atendimento psicológico']},
   {id:'apoio-social',name:'Apoio social',terms:['apoio social','serviço social','assistência social']},
@@ -49,14 +49,14 @@ function renderResults(){
     if(reach&&!values(item.reach).includes(reach))return false;
     return true;
   });
-  $('#orgCount').textContent=organizations.length?`${results.length} ${results.length===1?'organização encontrada':'organizações encontradas'}`:'Ainda não há organizações validadas para exibir.';
+  $('#orgCount').textContent=organizations.length?`${results.length} ${results.length===1?'perfil demonstrativo encontrado':'perfis demonstrativos encontrados'}`:'Ainda não há organizações para exibir.';
   if(!organizations.length){$('#orgResults').innerHTML='<div class="organization-empty"><strong>O diretório está em preparação.</strong><p>Nenhuma ONG ou instituição foi publicada ainda. Os filtros já podem ser explorados; os resultados aparecerão após cadastro, autorização e validação das informações.</p></div>';return;}
   if(!results.length){$('#orgResults').innerHTML='<div class="organization-empty"><strong>Nenhuma organização encontrada com estes filtros.</strong><p>Você pode escolher outros serviços, retirar o filtro de município ou ampliar a busca para todo o Brasil.</p></div>';return;}
   $('#orgResults').innerHTML=results.map(item=>{
     const details=[['Localização',[item.city,item.state].filter(Boolean).join(' / ')],['Área de atuação',values(item.area).join(', ')],['Serviços cadastrados',values(item.services).join(', ')],['Público atendido',values(item.audience).join(', ')]];
     const contact=item.publicContactConsent===true&&(item.publicContactUrl||item.publicWebsite);
     const safeContact=contact&&/^https:\/\//i.test(contact)?contact:null;
-    return `<article class="organization-card"><span class="eyebrow">ORGANIZAÇÃO VALIDADA</span><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.summary||'')}</p><dl>${details.filter(([,value])=>value).map(([label,value])=>`<div><dt>${label}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl><a href="perfil.html?tipo=ong&id=${encodeURIComponent(item.id)}">Conhecer a organização ↗</a>${safeContact?` · <a href="${escapeHtml(safeContact)}" target="_blank" rel="noopener noreferrer">Canal oficial ↗</a>`:''}</article>`;
+    return `<article class="organization-card"><span class="eyebrow">${item.demo?'CONTEÚDO DEMONSTRATIVO · ORGANIZAÇÃO FICTÍCIA':'ORGANIZAÇÃO AUTORIZADA'}</span><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.summary||'')}</p><dl>${details.filter(([,value])=>value).map(([label,value])=>`<div><dt>${label}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl><a href="perfil.html?tipo=ong&id=${encodeURIComponent(item.id)}">Ver perfil ${item.demo?'fictício':'da organização'} ↗</a>${item.demo?`<p class="demo-contact">Contato fictício: ${escapeHtml(item.contact||'não informado')} · Não envia mensagens.</p>`:safeContact?` · <a href="${escapeHtml(safeContact)}" target="_blank" rel="noopener noreferrer">Canal oficial ↗</a>`:''}</article>`;
   }).join('');
 }
 ['orgState','orgCity','orgName','orgArea','orgAudience','orgReach'].forEach(id=>$('#'+id).addEventListener(id==='orgState'||id==='orgArea'||id==='orgAudience'||id==='orgReach'?'change':'input',renderResults));
