@@ -1,0 +1,181 @@
+/* Sistema visual compartilhado do Projeto Ponte. Carregado depois dos estilos legados. */
+:root{--ink:#2B1138;--plum:#2B1138;--deep:#2B1138;--cream:#F5F1EB;--paper:#F5F1EB;--rose:#e9dbe8;--mint:#e2ece9;--teal:#1D4F56;--muted:#665e68;--line:#ded5de;--radius:4px}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,Arial,sans-serif;background:var(--paper);color:var(--ink)}
+body :is(h1,h2,h3){font-family:Manrope,Arial,sans-serif;letter-spacing:-.045em;font-weight:700;line-height:1.16}
+body h1{font-size:clamp(2.7rem,4.6vw,4.7rem)}
+body h2{font-size:clamp(1.8rem,3vw,3rem)}
+body h3{font-size:clamp(1.25rem,1.9vw,1.8rem)}
+body p{line-height:1.65}
+.shell{width:min(100% - 2*var(--space),1440px);max-width:1440px;margin-inline:auto}
+.prototype-bar,.demo-strip{background:var(--purple);color:#f5edf5;font-size:11px;line-height:1.35;letter-spacing:0;padding:8px var(--space);text-align:center;text-transform:none}
+.site-header{background:#fff;border-bottom:1px solid #eee8ee}
+.site-header .header-inner{height:auto;min-height:94px}
+.site-header .brand{color:var(--purple);gap:12px}
+.site-header .brand img,.site-header .brand-mark{width:49px;height:49px;border-radius:14px;background:none}
+.site-header .brand strong{font:800 32px/1 Manrope,Arial,sans-serif;letter-spacing:-.09em}
+.site-header .brand small{font:600 8px/1.1 Manrope,Arial,sans-serif;letter-spacing:.08em;color:#6e6572;text-transform:uppercase;margin-top:4px}
+.main-nav .button,.main-nav .button-sm{background:var(--accent);border-color:var(--accent);border-radius:5px;color:white;padding:11px 15px}
+.main-nav .button:hover{background:#6d0057;color:white}
+.eyebrow{font:800 11px/1.35 Manrope,Arial,sans-serif;letter-spacing:.09em;color:var(--accent)}
+.button,.button-cream,.form-submit,.area-button{font-family:Manrope,Arial,sans-serif;background:var(--accent);color:white;border:1px solid var(--accent);border-radius:5px;box-shadow:none}
+.button:hover,.form-submit:hover,.area-button:hover{background:#6d0057;color:white;transform:none}
+.text-link,.vitrine-back{color:var(--accent)}
+:is(a,button,input,select,textarea,summary):focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+:is(input,select,textarea){accent-color:var(--accent)}
+.account-page :is(input,select,textarea),.area-page :is(input,select,textarea),.profile-page :is(input,select,textarea){border:1px solid #c9bfcb;border-radius:4px;background:white;color:var(--purple);min-height:44px}
+.account-page :is(input,select,textarea):focus,.area-page :is(input,select,textarea):focus,.profile-page :is(input,select,textarea):focus{outline:2px solid var(--accent);outline-offset:2px}
+.dialog,.account-dialog{background:white;color:var(--purple);border:1px solid var(--line);border-radius:5px;box-shadow:0 25px 80px #2b11382b}
+.dialog-note,.review-note,.account-notice,.area-note{background:#f3eef4;color:#4e4053;border-color:#bea8c0;border-radius:2px}
+.form-error,.area-error{color:#762f32;background:#faeceb;border-color:#b45e61}
+.area-success{color:#245843;background:#e4f0eb;border-color:#1D4F56}
+.site-footer,.account-footer,.area-footer,.admin-footer{background:var(--purple);color:#f4edf5}
+.site-footer .brand strong{font:800 32px/1 Manrope,Arial,sans-serif;letter-spacing:-.09em}
+.site-footer .brand small{font:600 8px/1.1 Manrope,Arial,sans-serif;letter-spacing:.08em}
+.account-footer .shell,.area-footer .shell,.admin-footer .shell{width:min(100% - 2*var(--space),1440px);max-width:1440px;margin-inline:auto}
+/* Aprender sobre o câncer: capas editoriais em vez de ornamentos. */
+.flix-page{background:var(--paper);color:var(--purple)}
+.flix-shell{padding:70px 0 100px}
+.flix-heading{align-items:start;gap:45px}
+.flix-heading h1{font-size:clamp(3.1rem,5vw,5.4rem);margin:10px 0 18px;max-width:830px}
+.flix-heading p{font-size:16px;line-height:1.7;color:#5c535e;max-width:780px}
+.flix-format-note{color:#6d606f;border-color:#d9cfd9;font-size:12px;font-weight:700}
+.profile-chip{border-radius:3px;border-color:#cbbeca;color:var(--purple);background:white;font-size:12px;white-space:normal}
+.flix-feature{background:var(--purple);border-radius:3px;min-height:300px;padding:44px 50px;grid-template-columns:minmax(0,1.3fr) minmax(220px,.7fr)}
+.flix-feature .tag{color:#e3cde3;font-size:11px;letter-spacing:.08em}
+.flix-feature h2{font-size:clamp(2.4rem,4vw,4.1rem);letter-spacing:-.055em;margin:15px 0}
+.flix-feature p{font-size:15px;color:#e7dce8;line-height:1.65}
+.flix-feature .button,.journey-hero .button{background:var(--accent);color:white;border-color:var(--accent)}
+.feature-art,.journey-art{border:0;border-left:1px solid #8e738f;border-radius:0;color:white;display:flex;flex-direction:column;justify-content:end;align-items:start;padding:0 0 4px 25px;font:inherit;min-height:0}
+.feature-art strong,.journey-art strong{font-size:20px;line-height:1.3;font-weight:700;max-width:230px}
+.feature-art span,.journey-art span{font-size:12px;color:#d5c1d8;line-height:1.5;margin-top:10px}
+.flix-meta span{border-radius:3px;font-size:11px;font-weight:700}
+.collection-heading h2{font-size:30px}
+.flix-track{gap:16px}
+.flix-card{flex-basis:285px;border-color:#ddd4dd;border-radius:3px;background:white}
+.flix-cover,.flix-card.peach .flix-cover,.flix-card.lilac .flix-cover{background:var(--petrol);color:white;min-height:182px;height:auto;padding:20px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.flix-card:nth-child(2n) .flix-cover{background:var(--purple)}
+.flix-card:nth-child(3n) .flix-cover{background:#655267}
+.flix-cover strong{font:700 24px/1.18 Manrope,Arial,sans-serif;letter-spacing:-.04em;max-width:220px}
+.flix-cover small{writing-mode:horizontal-tb;color:#e8dfe8;font-size:10px;letter-spacing:.08em}
+.flix-card-body{padding:20px}
+.flix-card-body small{color:var(--accent);font-size:10px}
+.flix-card-body strong{font:700 21px/1.22 Manrope,Arial,sans-serif;letter-spacing:-.03em}
+.flix-card-body p{font-size:13px;line-height:1.55;color:#5c535f}
+.flix-card-body>span{color:var(--petrol);font-size:12px}
+.flix-progress,.area-progress{background:#e6dfe6;border-radius:2px}
+.flix-progress i,.area-progress i{background:var(--petrol)}
+.flix-privacy{color:#655c65;border-color:var(--line)}
+.journey-hero,.journey-hero.mint,.journey-hero.peach,.journey-hero.lilac{background:#e9e3e9;border-radius:3px;color:var(--purple)}
+.journey-hero p,.journey-layout p{color:#5b535e}
+.journey-art{border-left-color:#b5a7b7;color:var(--purple)}
+.journey-art span{color:#675a6b}
+.journey-info>div,.lesson-placeholder,.lesson-material{background:#f3eef3;border-radius:3px}
+.journey-info small{color:var(--accent)}
+.journey-steps,.lesson-demo{border-color:var(--line);border-radius:3px;background:white}
+.journey-step{color:var(--purple);border-color:var(--line)}
+.journey-step span{color:var(--accent)}
+.journey-step:hover{background:#f7f4f7}
+.activity-answer{background:#f8f6f8;border-color:var(--line);border-radius:3px}
+.activity-answer:has(input:checked){background:#f1e9f1;border-color:var(--accent)}
+.lesson-placeholder>span{display:none}
+.lesson-placeholder strong,.lesson-material strong,.completion-note strong{font:700 22px/1.3 Manrope,Arial,sans-serif}
+.completion-note{background:#e8f0ed;border-radius:3px}
+/* Vitrine: portfólio tipográfico para perfis fictícios sem retratos inventados. */
+.vitrine-page,.profile-page{background:var(--paper);color:var(--purple)}
+.vitrine-opening{background:var(--paper);padding:80px 0 60px}
+.vitrine-opening-grid{align-items:end}
+.vitrine-opening h1,.category-heading h1,.project-opening h1,.info-wrap h1{font-size:clamp(3rem,4.8vw,5.6rem);line-height:1.13;letter-spacing:-.05em}
+.vitrine-opening p,.category-heading p,.project-opening p,.info-wrap>p{font-size:16px;line-height:1.7;color:#5d5360}
+.vitrine-opening-note{border-color:#b9aab9;padding-left:22px;border-top:0;border-left:2px solid #b9aab9}
+.vitrine-opening-note strong{font:700 20px/1.25 Manrope,Arial,sans-serif}
+.vitrine-opening-note p{font-size:14px}
+.vitrine-routes{border-color:#d8ced8}
+.vitrine-routes a{border-color:#d8ced8;min-height:230px}
+.vitrine-routes a:hover{background:#f1ebf1}
+.vitrine-routes span,.vitrine-back,.vitrine-bottom a{color:var(--accent)}
+.vitrine-routes strong{font:700 clamp(1.55rem,2.1vw,2.4rem)/1.17 Manrope,Arial,sans-serif;letter-spacing:-.04em}
+.vitrine-routes small,.vitrine-bottom p{font-size:14px;line-height:1.6;color:#615762}
+.category-heading{border-color:var(--line)}
+.category-symbol{display:none}
+.category-search{max-width:720px}
+.category-search label{font-size:13px;color:var(--purple)}
+.category-search input{border-color:#cbbdcb;color:var(--purple);font-size:14px}
+.category-search p{font-size:13px;color:#615863}
+.vitrine-item{border-color:var(--line);border-radius:3px;grid-template-columns:32% 68%}
+.vitrine-item-art,.vitrine-item:nth-child(2n) .vitrine-item-art{background:var(--petrol);color:white}
+.vitrine-item:nth-child(2n) .vitrine-item-art{background:#5e4b61}
+.vitrine-item-art span{font:700 28px/1 Manrope,Arial,sans-serif}
+.vitrine-item-art i{font:700 14px/1.3 Manrope,Arial,sans-serif;align-self:start;font-style:normal;letter-spacing:.08em;text-transform:uppercase}
+.vitrine-item-copy{padding:25px}
+.vitrine-item-copy small{font-size:10px;color:var(--accent)}
+.vitrine-item-copy h2{font-size:26px;margin:13px 0 8px}
+.vitrine-item-copy p{font-size:13px;line-height:1.6;color:#5d5560}
+.vitrine-item-copy a{font-size:13px;color:var(--accent)}
+.vitrine-location{font-weight:700;color:var(--petrol)!important}
+.vitrine-disclaimer{font-size:13px;color:#655b66;border-color:var(--line)}
+.vitrine-empty{background:#f0eaf0}
+.vitrine-empty strong{font:700 23px/1.3 Manrope,Arial,sans-serif}
+.project-opening{background:#eee8ee;border-left:3px solid var(--accent)}
+.project-opening>strong{color:var(--accent)}
+.project-detail-grid p{color:#5f5661}
+.project-art{border-color:#cabcca;background:#f3eff3;color:#6f6370}
+.project-detail-grid dt{color:var(--accent)}
+.info-wrap>section{border-color:var(--line)}
+.info-wrap section p{color:#5f5661}
+/* Cadastro, perfis e áreas internas. */
+.account-page,.area-page,.admin-page{background:var(--paper);color:var(--purple)}
+.auth-intro h1 em{color:var(--accent);font-style:normal}
+.auth-intro p,.dashboard-top p{color:#5f5661}
+.auth-card,.profile-switcher,.account-main,.account-status,.quick-action,.module-row{border-color:var(--line);border-radius:3px;box-shadow:none}
+.auth-card{background:white}
+.auth-tabs button[aria-selected="true"]{background:var(--purple);color:white;border-color:var(--purple)}
+.form-step,.auth-footnote,.account-demo-badge{color:var(--accent)}
+.account-header-actions>a{color:var(--accent);font-weight:800}
+.area-page .prototype-bar{background:var(--purple);font-size:11px;letter-spacing:0;text-transform:none}
+.area-page .area-header{min-height:94px}
+.area-account button,.admin-intro button{border-radius:4px;background:var(--accent);border:1px solid var(--accent);color:white;min-height:42px}
+.area-main{padding-top:62px}
+.area-intro{border-color:var(--line)}
+.area-intro h1{font-size:clamp(2.7rem,4.5vw,4.7rem)}
+.area-intro p,.area-content p{color:#5f5661}
+.area-avatar{display:none}
+.area-layout{grid-template-columns:230px minmax(0,1fr);gap:50px}
+.area-nav a{font-size:13px;border-left-color:transparent;color:#5c5260}
+.area-nav a:hover,.area-nav a[aria-current="page"]{border-color:var(--accent);background:#f1ebf1;color:var(--purple)}
+.area-content h2{font-size:clamp(2.1rem,3.2vw,3.2rem)}
+.area-content h3{font-size:21px}
+.area-kicker{color:var(--accent);letter-spacing:.08em}
+.area-card,.area-card.tint,.area-card.purple{background:white;border-color:var(--line);border-radius:3px}
+.area-card.tint{border-left:3px solid var(--petrol)}
+.area-card.purple{border-left:3px solid var(--accent)}
+.area-card strong{font:700 22px/1.3 Manrope,Arial,sans-serif;letter-spacing:-.025em}
+.area-card a,.area-card button{color:var(--accent);font-size:13px}
+.area-button{border-radius:4px}
+.area-stat{background:#f0eaf0;border-top:2px solid var(--accent)}
+.area-stat strong{font:700 34px/1.2 Manrope,Arial,sans-serif}
+.area-stat span{color:#625665;font-size:12px}
+.area-step-list a{border-color:var(--line);color:var(--purple)}
+.area-step-list a[aria-current="step"]{border-color:var(--accent);background:#f3edf3}
+.area-badge{background:#e8f0ed;color:var(--petrol);border-radius:3px}
+.area-badge.locked{background:#f1edf1;color:#675c68}
+.admin-header>span{color:var(--accent);font-size:13px}
+.admin-intro p,.admin-content>div>p,.admin-denied p{color:#5f5661}
+.admin-layout{gap:25px}
+.admin-nav{background:var(--purple)}
+.admin-nav button{font-size:13px;color:#eee2ef}
+.admin-nav button[aria-current=page],.admin-nav button:hover{background:#f2edf2;color:var(--purple)}
+.admin-content{background:white;border-color:var(--line);border-radius:3px}
+.admin-empty{border-color:var(--line)}
+.admin-empty strong{font:700 22px/1.3 Manrope,Arial,sans-serif}
+.admin-safety{color:#655c67}
+/* Perfil público. */
+.profile-hero,.profile-detail-section,.profile-field-grid,.profile-portrait,.product-card{border-color:var(--line)}
+.profile-portrait{border-radius:3px;background:#eee8ee;color:var(--accent);font:700 18px/1.4 Manrope,Arial,sans-serif}
+.profile-field-grid strong{font-family:Manrope,Arial,sans-serif}
+.product-card{border-radius:3px;background:white}
+.product-image{background:#e8f0ed;color:var(--petrol)}
+@media(max-width:900px){.area-layout{grid-template-columns:1fr;gap:22px}.area-nav a{border-left:0;border-bottom:3px solid transparent}.area-nav a[aria-current="page"]{border-bottom-color:var(--accent)}}
+@media(max-width:760px){.site-header .header-inner{min-height:76px}.flix-feature{grid-template-columns:1fr;padding:29px}.feature-art,.journey-art{border-left:0;border-top:1px solid #bda8bd;padding:18px 0 0}.journey-art{border-top-color:#bda8bd}.flix-heading h1{font-size:clamp(2.7rem,9vw,4rem)}.vitrine-item{grid-template-columns:1fr}.vitrine-item-art{min-height:90px}.vitrine-item-art i{font-size:13px}.vitrine-opening-note{padding-left:17px}.account-footer .shell,.area-footer .shell{flex-wrap:wrap}}
+@media(max-width:600px){:root{--space:20px}.site-header .brand img,.site-header .brand-mark{width:42px;height:42px}.site-header .brand strong{font-size:27px}.site-header .brand small{font-size:7px}.flix-shell{padding-top:45px}.flix-heading p{font-size:14px}.flix-card{flex-basis:250px}.vitrine-opening h1,.category-heading h1,.project-opening h1,.info-wrap h1{font-size:clamp(2.7rem,9vw,3.8rem)}.area-main{padding-top:36px}.area-intro h1{font-size:2.6rem}.area-stat strong{font-size:26px}.area-card strong{font-size:20px}.admin-intro h1{font-size:2.6rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}

@@ -225,7 +225,7 @@ function renderLearningSnapshot(){
   const completed=started.reduce((total,[,state])=>total+(state.completed||[]).length,0);
   const next=started.find(([,state])=>(state.completed||[]).length<3);
   const journey=window.PONTE_JOURNEYS?.find(item=>item.id===next?.[0]);
-  target.innerHTML=`<div><span class="eyebrow">APRENDIZAGEM</span><strong>${started.length?`${started.length} ${started.length===1?'jornada iniciada':'jornadas iniciadas'}`:'Sua primeira jornada começa aqui'}</strong><p>${started.length?`${completed} etapas concluídas nesta sessão${journey?` · Próxima: ${escapeHtml(journey.title)}`:''}.`:'Explore os temas disponíveis no Oncoflix.'}</p></div><a href="oncoflix.html">${started.length?'Continuar no Oncoflix':'Conhecer jornadas'} ↗</a>`;
+  target.innerHTML=`<div><span class="eyebrow">APRENDER SOBRE O CÂNCER</span><strong>${started.length?`${started.length} ${started.length===1?'jornada iniciada':'jornadas iniciadas'}`:'Sua primeira jornada começa aqui'}</strong><p>${started.length?`${completed} etapas concluídas nesta sessão${journey?` · Próxima: ${escapeHtml(journey.title)}`:''}.`:'Explore os temas disponíveis no Oncoflix.'}</p></div><a href="oncoflix.html">${started.length?'Continuar no Oncoflix':'Conhecer jornadas'} ↗</a>`;
 }
 function renderDashboard(){
   if(activeRole==='admin'){

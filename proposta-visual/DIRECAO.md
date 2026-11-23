@@ -1,6 +1,6 @@
-# Proposta visual para validação
+# Direção visual aprovada
 
-Estas duas páginas são uma prévia isolada. A versão publicada e as demais áreas do protótipo permanecem na `main` até a aprovação da direção estética.
+Estas duas páginas registram a proposta aprovada. A direção foi aplicada à experiência pública, ao acesso, aos painéis individuais e à administração do protótipo.
 
 ## Linguagem
 
@@ -16,6 +16,6 @@ Estas duas páginas são uma prévia isolada. A versão publicada e as demais á
 - `index.html`: chamada institucional completa, fotografia documental, três caminhos em lista editorial e Vitrine Ponte sem repetição do convite educativo.
 - `organizacoes.html`: busca em destaque, filtros funcionais com os mesmos dados fictícios atuais, cards institucionais e estado sem resultados.
 
-## Aplicação após aprovação
+## Aplicação no protótipo
 
-O mesmo sistema deverá cobrir Aprender sobre o câncer, Vitrine Ponte, perfis, acesso, áreas individuais, ONG, empresa e administração. Capas de jornadas, indicadores, barras de progresso, alertas e modais seguirão os mesmos tokens. A migração será visual; nomes, rotas, dados, permissões e regras de negócio permanecem os definidos no protótipo atual.
+O mesmo sistema cobre Aprender sobre o câncer, Vitrine Ponte, perfis, acesso, áreas individuais, ONG, empresa e administração. Capas de jornadas, indicadores, barras de progresso e alertas seguem os mesmos tokens. A migração foi visual; rotas, dados, permissões e regras de negócio foram preservados.

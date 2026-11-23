@@ -2,6 +2,8 @@
 
 Protótipo do Projeto Ponte, iniciativa do Portal VPM, atualizado conforme os Documentos 1, 2, 4 e 5, o trecho recebido do Documento 3 e o relatório de revisão cruzada. Os documentos de origem não são publicados neste repositório.
 
+A direção visual aprovada usa roxo profundo, verde petróleo, superfícies claras, tipografia Manrope e uma fotografia documental identificada como ilustrativa. O sistema é compartilhado pela experiência pública, pelo acesso e pelos ambientes individuais. A fotografia e seus créditos estão documentados em `proposta-visual/DIRECAO.md`.
+
 ## O que esta versão demonstra
 
 | Área | Fluxo disponível |
