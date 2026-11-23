@@ -4,16 +4,16 @@ Estas duas páginas são uma prévia isolada. A versão publicada e as demais á
 
 ## Linguagem
 
-- Conceito: sofisticação acolhedora, com composição editorial, bastante espaço em branco e informação objetiva.
+- Conceito: sofisticação acolhedora, com composição editorial, bastante espaço em branco e informação objetiva. A revisão evita três cards idênticos, símbolos decorativos grandes e frases genéricas.
 - Paleta: roxo profundo `#2B1138` como base institucional; verde petróleo `#1D4F56` para áreas de apoio; off-white `#F5F1EB` e branco `#FFFFFF` como superfícies; roxo acento `#820066` para ação e foco.
 - Tipografia: Manrope em pesos 400, 500, 600, 700 e 800. Uma única família evita conflito entre páginas e mantém legibilidade.
-- Fotografia: imagem editorial humana já presente no projeto, identificada como ilustrativa. Elementos gráficos ficam restritos a ícones lineares e uma composição discreta na página interna.
-- Componentes: cabeçalho e rodapé compartilhados, botões, cards, campos, filtros, etiquetas, estados vazios e avisos. A proposta usa cantos discretos, linhas finas e movimento sutil.
+- Fotografia: [registro documental de uma oficina comunitária](https://unsplash.com/photos/women-talking-at-art-class-table-8NDGA3RepNg) do Centre for Ageing Better, oferecido sob domínio público e licença Unsplash. A imagem é identificada como ilustrativa e as pessoas não são apresentadas como participantes do Projeto Ponte.
+- Componentes: cabeçalho e rodapé compartilhados, ações em texto, lista de caminhos, campos, filtros, etiquetas, estados vazios e avisos. A proposta usa linhas finas, superfícies simples e movimento sutil.
 - Acessibilidade: links para pular conteúdo, navegação por teclado, foco visível, rótulos de formulário, estados selecionados e redução de movimento quando solicitada pelo sistema.
 
 ## Amostras
 
-- `index.html`: hierarquia institucional, fotografia, três caminhos de entrada e Vitrine Ponte sem repetição do convite educativo.
+- `index.html`: chamada institucional completa, fotografia documental, três caminhos em lista editorial e Vitrine Ponte sem repetição do convite educativo.
 - `organizacoes.html`: busca em destaque, filtros funcionais com os mesmos dados fictícios atuais, cards institucionais e estado sem resultados.
 
 ## Aplicação após aprovação
