@@ -38,3 +38,14 @@
 .admin-page .org-table-wrap th,.admin-page .org-table-wrap td{text-align:left;border-bottom:1px solid var(--line);padding:10px;vertical-align:top}
 .admin-page [data-edit-opportunity]{border:0;background:none;color:var(--accent);font:800 12px Manrope,Arial,sans-serif;text-decoration:underline;cursor:pointer}
 @media(max-width:600px){.admin-page .org-admin-details dl,.admin-page .org-admin-fields{grid-template-columns:1fr}}
+.area-profile-dialog{width:min(520px,calc(100% - 32px));border:1px solid #d9cfd9;border-radius:4px;padding:26px;background:#fff;color:#2b1138;box-shadow:0 24px 70px #2b113838}
+.area-profile-dialog::backdrop{background:#2b1138a8}
+.area-profile-dialog form{display:grid;gap:16px}
+.area-profile-dialog h2{font-size:25px;margin:0}
+.area-profile-dialog p{margin:0;color:#5c535f}
+.area-dialog-head{display:flex;justify-content:space-between;align-items:start;gap:16px}
+.area-dialog-head button{border:0;background:transparent;color:#2b1138;font-size:28px;line-height:1;cursor:pointer}
+.area-profile-dialog label{display:grid;gap:6px;font-size:13px;font-weight:700}
+.area-profile-dialog select,.area-profile-dialog input{width:100%;padding:11px 12px;border:1px solid #bcb0bf;background:white;color:#2b1138;font:inherit}
+.area-profile-dialog .area-button{justify-self:start}
+@media(max-width:600px){.area-account{flex-wrap:wrap}.area-account label{flex:1 1 100%}.area-account button{flex:1 1 auto}}

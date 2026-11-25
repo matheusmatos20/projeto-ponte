@@ -9,13 +9,14 @@ const percent=j=>Math.round(((saved(j).completed?.length||0)+(saved(j).activityD
 const save=()=>sessionStorage.setItem(progressKey,JSON.stringify(progress));
 const url=j=>`oncoflix.html?jornada=${encodeURIComponent(j.id)}`;
 $('#accountLink').textContent=session?'Meu espaço':'Entrar';
-$('#accountLink').href=session?'conta.html#meu-espaco':'conta.html#entrar';
+$('#accountLink').href=session?(session.activeRole==='admin'?'admin.html':`area.html?perfil=${encodeURIComponent(session.activeRole)}`):'conta.html#entrar';
 function card(j){
   return `<a class="flix-card ${esc(j.color)}" href="${url(j)}"><div class="flix-cover" role="img" aria-label="Capa ilustrativa da jornada ${esc(j.title)}"><small>CONTEÚDO DEMONSTRATIVO</small><strong>${esc(j.title)}</strong></div><div class="flix-card-body"><small>${esc(j.category.toUpperCase())} · ${esc(j.duration)}</small><strong>${esc(j.title)}</strong><p>${esc(j.summary)}</p><span>${saved(j).started?`${percent(j)}% concluído na demonstração`:'Duas aulas e uma atividade de exemplo'}</span>${saved(j).started?`<div class="flix-progress" role="progressbar" aria-valuenow="${percent(j)}" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso na jornada"><i style="width:${percent(j)}%"></i></div>`:''}</div></a>`;
 }
 function renderHome(){
   $('#flixHome').hidden=false;$('#flixDetail').hidden=true;
-  $('#profileChip').textContent=session?`Explorando como: ${session.profiles?.find(p=>p.role===session.activeRole)?.role||'participante'}`:'Explore sem entrar ou use uma conta de teste';
+  const profileNames={ong:'organização',comunicador:'influenciador',industria:'indústria',empresa:'empresa',paciente:'paciente',familiar:'familiar',profissional:'profissional da saúde',empreendedora:'empreendedora',aprendiz:'participante'};
+  $('#profileChip').textContent=session?`Explorando como: ${profileNames[session.activeRole]||'participante'}`:'Explore sem entrar ou use uma conta de teste';
   const featured=journeys[0];
   $('#featuredJourney').innerHTML=`<div class="flix-feature"><div><span class="tag">JORNADA DE EXEMPLO</span><h2>${esc(featured.title)}</h2><p>${esc(featured.summary)}</p><div class="flix-meta"><span>${esc(featured.audience)}</span><span>${esc(featured.duration)}</span></div><a class="button button-cream" href="${url(featured)}">Conhecer a jornada</a></div><div class="feature-art"><strong>JORNADA DE EXEMPLO</strong><span>${esc(featured.audience)}</span></div></div>`;
   const started=journeys.filter(j=>saved(j).started&&percent(j)<100);

@@ -55,7 +55,7 @@ const roles = {
       ['Educação e atualização','Cursos, jornadas e materiais para desenvolvimento.'],['Meu negócio','História, atuação, produtos e serviços.'],['Minha vitrine','Prévia das informações autorizadas para o público.'],['Projetos e iniciativas','Propostas e ações em que o negócio participe.'],['Oportunidades e conexões','Solicitações avaliadas e mediadas pelo Portal VPM quando cabível.'],['Minhas participações','Histórico das iniciativas realizadas.']]
   },
   comunicador: {
-    name: 'Comunicador, influenciador ou ativista', title: 'Seu espaço de comunicação',
+    name: 'Influenciador, comunicador ou ativista', title: 'Seu espaço de comunicação',
     intro: 'Organize temas, canais e trabalhos para possíveis campanhas e projetos.',
     next: 'Apresentar canais e temas', nextDetail: 'A atuação e a vitrine passam por análise.',
     visibility: 'Publicação sob autorização', access: 'A publicação dos canais depende de autorização. Convites para campanhas e projetos dependem de compatibilidade, disponibilidade e concordância.',
@@ -73,10 +73,10 @@ const roles = {
       ['Perfil institucional','Dados e apresentação da empresa.'],['Projetos autorizados','Somente projetos atribuídos ao representante.'],['Cronogramas','Etapas das iniciativas autorizadas.'],['Entregas e aprovações','Materiais e resultados previstos em cada projeto.'],['Indicadores agregados','Resultados permitidos, sem dados individuais.'],['Relatórios de execução','Informações de projetos autorizados.'],['Histórico de iniciativas','Ações realizadas com a empresa.'],['Usuários internos','Representantes e permissões da conta institucional.']]
   },
   admin: {
-    name: 'Administração VPM', title: 'Gestão da OncoPontes',
+    name: 'Administração OncoPontes', title: 'Gestão da OncoPontes',
     intro: 'Visão demonstrativa da administração e da curadoria central do Portal VPM.',
     next: 'Estruturar permissões', nextDetail: 'Nenhuma decisão real pode ser tomada nesta prévia.',
-    visibility: 'Acesso administrativo', access: 'As funções administrativas devem ser segmentadas por necessidade. Esta demonstração não permite aprovar pessoas, acessar documentos ou publicar conteúdos.',
+    visibility: 'Acesso administrativo', access: 'As funções administrativas são demonstradas no navegador. Decisões e publicações de teste não chegam a um servidor nem a outros usuários.',
     fields: [],
     modules: [
       ['Usuários e organizações','Gestão de contas e perfis conforme permissões.'],['Validação de perfis','Análise humana, justificativa e histórico.'],['Documentos','Conferência com acesso restrito.'],['Vitrines e conteúdo','Moderação e aprovação antes da publicação.'],['Educação e jornadas','Organização e curadoria dos conteúdos.'],['Projetos e oportunidades','Conexões qualificadas, responsabilidades e entregas.'],['Empresas e patrocinadores','Gestão das relações institucionais.'],['Permissões e auditoria','Acessos segmentados e registro das ações.'],['Privacidade','Tratamento de solicitações dos titulares.']]
@@ -111,6 +111,7 @@ const doc4Modules = {
   ]
 };
 for(const [id,modules] of Object.entries(doc4Modules))roles[id].modules=modules;
+roles.industria={...roles.empresa,name:'Indústria',title:'Espaço da indústria',intro:'Acompanhe iniciativas atribuídas e informações autorizadas para sua instituição.',access:'Este perfil acessa somente o projeto fictício atribuído e indicadores agregados. Não acessa dados privados de participantes ou organizações.',fields:[...roles.empresa.fields],modules:[...roles.empresa.modules]};
 
 const demoAccounts = [
   ['aprendiz@ponte.test','Participante de aprendizagem',['aprendiz']],
@@ -121,10 +122,11 @@ const demoAccounts = [
   ['empreendedora@ponte.test','Empreendedora',['empreendedora']],
   ['comunicador@ponte.test','Comunicador ou ativista',['comunicador']],
   ['empresa@ponte.test','Representante de empresa',['empresa']],
+  ['industria@ponte.test','Representante de indústria',['industria']],
   ['admin@ponte.test','Equipe VPM',['admin']],
   ['multiperfil@ponte.test','Participante com dois perfis',['paciente','empreendedora']]
-].map(([email,name,roleIds])=>({email,name,password:DEMO_PASSWORD,profiles:roleIds.map(role=>({role,data:{},institution:role==='ong'?'Organização de demonstração':role==='empresa'?'Empresa de demonstração':''})),demo:true}));
-const canonicalDemoEmail=value=>String(value).trim().toLowerCase().replace('@oncopontes.test','@ponte.test');
+].map(([email,name,roleIds])=>({email,name,password:DEMO_PASSWORD,profiles:roleIds.map(role=>({role,data:{},institution:role==='ong'?'Organização de demonstração':['empresa','industria'].includes(role)?'Instituição de demonstração':''})),demo:true}));
+const canonicalDemoEmail=value=>String(value).trim().toLowerCase().replace(/^influenciador@/,'comunicador@').replace('@oncopontes.test','@ponte.test');
 
 const createdAccounts = [];
 let account = null;
@@ -153,7 +155,7 @@ function showError(id,message){const node=$('#'+id);node.textContent=message;nod
 function clearErrors(){document.querySelectorAll('.form-error').forEach(node=>{node.hidden=true;node.textContent='';});}
 function institutionField(role,where){
   const target=$('#'+where);
-  target.innerHTML=role==='ong'?'<label>Nome da organização <input name="institution" required maxlength="120" placeholder="Nome da organização"></label>':role==='empresa'?'<label>Nome da empresa ou instituição <input name="institution" required maxlength="120" placeholder="Nome da instituição"></label>':'';
+  target.innerHTML=role==='ong'?'<label>Nome da organização <input name="institution" required maxlength="120" placeholder="Nome da organização"></label>':['empresa','industria'].includes(role)?'<label>Nome da empresa ou instituição <input name="institution" required maxlength="120" placeholder="Nome da instituição"></label>':'';
 }
 function login(email,password){
   const normalized=email.trim().toLowerCase();
@@ -234,7 +236,7 @@ function renderDashboard(){
     sessionStorage.setItem('ponteDemoSession',JSON.stringify({name:account.name,email:account.email,profiles:account.profiles,demo:account.demo,activeRole}));
     location.href='admin.html';return;
   }
-  if(['aprendiz','paciente','familiar','ong','profissional','empreendedora','empresa'].includes(activeRole)){
+  if(['aprendiz','paciente','familiar','ong','profissional','empreendedora','comunicador','empresa','industria'].includes(activeRole)){
     sessionStorage.setItem('ponteDemoSession',JSON.stringify({name:account.name,email:account.email,profiles:account.profiles,demo:account.demo,activeRole}));
     location.href=`area.html?perfil=${encodeURIComponent(activeRole)}`;
     return;
@@ -287,7 +289,7 @@ $('#loginTab').addEventListener('click',()=>showTab('login'));
 $('#registerTab').addEventListener('click',()=>showTab('register'));
 $('#registerRole').innerHTML=roleOptions(personalRoles);
 $('#newProfileRole').innerHTML=roleOptions(personalRoles);
-$('#demoAccount').innerHTML+='<option value="multiperfil@oncopontes.test">Conta com dois perfis</option>'+Object.entries(roles).filter(([id])=>id!=='admin').map(([id,role])=>`<option value="${id}@oncopontes.test">${escapeHtml(role.name)}</option>`).join('');
+$('#demoAccount').innerHTML+='<option value="multiperfil@oncopontes.test">Conta com dois perfis</option>'+Object.entries(roles).filter(([id])=>id!=='admin').map(([id,role])=>`<option value="${id==='comunicador'?'influenciador':id}@oncopontes.test">${escapeHtml(role.name)}</option>`).join('');
 $('#demoAccount').addEventListener('change',event=>{if(!event.target.value)return;$('#loginEmail').value=event.target.value;$('#loginPassword').value=DEMO_PASSWORD;clearErrors();});
 $('#registerRole').addEventListener('change',event=>institutionField(event.target.value,'registerRoleFields'));
 $('#registerNext1').addEventListener('click',()=>{
@@ -318,7 +320,7 @@ $('#registerForm').addEventListener('submit',event=>{
   if(demoAccounts.some(item=>item.email===canonicalDemoEmail(email))||createdAccounts.some(item=>item.email===email))return showError('registerError','Este e-mail já está em uso nesta demonstração. Entre com a conta ou use outro e-mail.');
   if(password.length<8)return showError('registerError','Use uma senha de teste com pelo menos 8 caracteres.');
   const institution=($('#registerRoleFields input')?.value||'').trim();
-  if((role==='ong'||role==='empresa')&&!institution)return showError('registerError','Informe o nome da organização ou empresa.');
+  if((role==='ong'||role==='empresa'||role==='industria')&&!institution)return showError('registerError','Informe o nome da organização ou empresa.');
   const data={interesses:$('#registerInterests').value.trim(),participacao:$('#registerParticipation').value.trim()};
   const created={email,name,password,profiles:[{role,data,institution}],demo:false};
   sessionStorage.removeItem('ponteDemoProgress');createdAccounts.push(created);account=created;activeRole=role;renderDashboard();
@@ -339,7 +341,7 @@ $('#addProfileForm').addEventListener('submit',event=>{
   if(!role)return showError('addProfileError','Escolha um tipo de perfil.');
   if(account.profiles.some(item=>item.role===role))return showError('addProfileError','Este tipo de perfil já está nesta conta de demonstração.');
   const institution=($('#newProfileFields input')?.value||'').trim();
-  if((role==='ong'||role==='empresa')&&!institution)return showError('addProfileError','Informe o nome da organização ou empresa.');
+  if((role==='ong'||role==='empresa'||role==='industria')&&!institution)return showError('addProfileError','Informe o nome da organização ou empresa.');
   account.profiles.push({role,data:{},institution});activeRole=role;$('#profileDialog').close();renderDashboard();
 });
 $('#logoutButton').addEventListener('click',()=>{account=null;activeRole=null;createdAccounts.length=0;sessionStorage.removeItem('ponteDemoSession');sessionStorage.removeItem('ponteDemoProgress');$('#dashboardView').hidden=true;$('#authView').hidden=false;$('#accountMenu').hidden=true;$('#accountMenu').open=false;$('#loginForm').reset();$('#registerForm').reset();$('#demoAccount').value='';showRegisterStep(1);showTab('login');window.scrollTo({top:0,behavior:'instant'});});

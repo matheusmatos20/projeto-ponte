@@ -1,4 +1,4 @@
-/* Sistema visual compartilhado do Projeto Ponte. Carregado depois dos estilos legados. */
+/* Sistema visual compartilhado da OncoPontes. Carregado depois dos estilos legados. */
 :root{--ink:#2B1138;--plum:#2B1138;--deep:#2B1138;--cream:#F5F1EB;--paper:#F5F1EB;--rose:#e9dbe8;--mint:#e2ece9;--teal:#1D4F56;--muted:#665e68;--line:#ded5de;--radius:4px}
 html{scroll-behavior:smooth}
 body{font-family:Manrope,Arial,sans-serif;background:var(--paper);color:var(--ink)}

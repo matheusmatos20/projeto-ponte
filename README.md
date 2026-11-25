@@ -13,11 +13,13 @@ A direção visual aprovada usa roxo profundo, verde petróleo, superfícies cla
 | Vitrine Ponte | Página própria e categorias separadas de profissionais, empreendedores e projetos; perfis e projeto de demonstração com páginas individuais |
 | Conexão mediada | Formulário demonstrativo na página da ONG, sem envio de dados |
 | Conta | Login central, cadastro básico, inclusão e troca de perfis |
-| Painéis | Ambientes próprios para aprendiz, paciente, familiar, ONG, profissional, empreendedor e empresa; administração VPM separada |
+| Painéis | Ambientes próprios para aprendiz, paciente, familiar, ONG, profissional, empreendedor, influenciador, empresa e indústria; administração OncoPontes separada |
 | Oncoflix | Quatro jornadas, duas aulas e uma atividade por jornada, com progresso de teste por perfil |
 | ONG | Cadastro institucional em sete etapas, diagnóstico privado em nove dimensões, formação por tema, múltiplos projetos e acompanhamento de oportunidades fictícias |
 | Empresa | Projeto fictício atribuído, etapas, entregas e indicadores agregados 5/3/2 |
 | Administração | Revisão demonstrativa de organizações e projetos, status de compliance, observações internas e registro de intermediação; sem proteção de servidor nesta versão |
+| Influenciador | Painel privado, rascunho de temas e canais, situação de projetos e acesso ao Oncoflix, sem publicação automática |
+| Indústria | Painel institucional com projeto fictício atribuído e indicadores agregados, sem acesso ao cadastro privado das ONGs |
 
 A página inicial apresenta a OncoPontes como **uma plataforma de conexões e ensino na causa do câncer**. O cadastro em três etapas e a alternância entre perfis continuam disponíveis. Dados de demonstração são identificados em cada área.
 
@@ -39,12 +41,13 @@ Abra `conta.html` ou use **Entrar ou cadastrar** no site. Todas as contas abaixo
 | Profissional da saúde | `profissional@oncopontes.test` |
 | ONG | `ong@oncopontes.test` |
 | Empreendedora | `empreendedora@oncopontes.test` |
-| Comunicador ou ativista | `comunicador@oncopontes.test` |
+| Influenciador, comunicador ou ativista | `influenciador@oncopontes.test` |
 | Empresa | `empresa@oncopontes.test` |
+| Indústria | `industria@oncopontes.test` |
 | Administração VPM | `admin@oncopontes.test` |
 | Paciente e empreendedora na mesma conta | `multiperfil@oncopontes.test` |
 
-Os e-mails antigos `@ponte.test` continuam aceitos como aliases das mesmas contas fictícias.
+Os e-mails antigos `@ponte.test` continuam aceitos como aliases das mesmas contas fictícias. `comunicador@oncopontes.test` também abre o perfil do influenciador.
 
 O cadastro de teste também permite criar uma conta e adicionar um segundo perfil. Dados da sessão e progresso ficam no armazenamento temporário do navegador; rascunhos, análises e projetos fictícios da ONG ficam no armazenamento local deste navegador. Senhas criadas no formulário permanecem somente em memória enquanto a página está aberta. **Não use dados pessoais, documentos ou informações de saúde reais.**
 
