@@ -2,18 +2,18 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#2B1138">
-  <title>Organizações de apoio oncológico | Projeto Ponte</title>
+  <title>Organizações de apoio oncológico | OncoPontes</title>
   <link rel="icon" href="assets/ponte-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="site-design.css">
   <link rel="stylesheet" href="site-editorial.css">
   <link rel="stylesheet" href="platform.css">
-  <script defer src="public-data.js"></script><script defer src="directory.js"></script><script defer src="site-nav.js"></script>
+  <script defer src="public-data.js"></script><script defer src="org-data.js"></script><script defer src="public-org.js"></script><script defer src="directory.js"></script><script defer src="site-nav.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <div class="demo-strip">Conteúdo demonstrativo — dados fictícios, utilizados exclusivamente para apresentação do protótipo.</div>
   <header class="site-header"><div class="container header-inner">
-    <a class="brand" href="index.html" aria-label="Projeto Ponte, início"><img src="assets/ponte-mark.svg" alt=""><span><strong>ponte</strong><small>um projeto do Portal VPM</small></span></a>
+    <a class="brand" href="index.html" aria-label="OncoPontes, início"><img src="assets/ponte-mark.svg" alt=""><span><strong>OncoPontes</strong><small>um projeto do Portal VPM</small></span></a>
     <button class="menu-toggle" type="button" aria-controls="mainNav" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
     <nav class="main-nav" id="mainNav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="oncoflix.html">Aprender sobre o câncer</a><a class="current" href="organizacoes.html" aria-current="page">Organizações</a><a href="vitrine.html">Vitrine Ponte</a><a class="button button-sm" href="conta.html#entrar">Entrar / Criar conta <span aria-hidden="true">↗</span></a></nav>
   </div></header>
@@ -22,10 +22,10 @@
     <section class="directory-search" aria-labelledby="searchTitle"><div class="container"><div class="search-panel"><div class="search-panel-head"><div><p class="eyebrow">COMECE PELO SERVIÇO</p><h2 id="searchTitle">Onde você gostaria de encontrar uma organização?</h2></div></div>
       <div class="search-row"><label for="orgName">Nome da organização<input id="orgName" type="search" placeholder="Nome, se souber"></label><label for="orgState">Estado<select id="orgState"><option value="">Todo o Brasil</option></select></label><label for="orgCity">Município<input id="orgCity" type="search" placeholder="Qualquer município"></label></div>
       <div class="filter-heading"><strong>Quais serviços você gostaria de encontrar?</strong><span>Escolha uma ou mais opções. Você também pode ver as organizações disponíveis sem selecionar nenhuma.</span></div><div id="serviceCategories" class="service-categories" role="group" aria-label="Serviços de apoio oncológico"></div>
-      <details class="more-filters"><summary>Mais opções de pesquisa <span aria-hidden="true">＋</span></summary><div class="extra-fields"><label for="orgArea">Área de atuação<select id="orgArea"><option value="">Todas as áreas</option></select></label><label for="orgAudience">Público atendido<select id="orgAudience"><option value="">Todos os públicos</option></select></label><label for="orgReach">Abrangência<select id="orgReach"><option value="">Todas</option></select></label></div></details>
+      <details class="more-filters"><summary>Mais opções de pesquisa <span aria-hidden="true">＋</span></summary><div class="extra-fields"><label for="orgArea">Área de atuação<select id="orgArea"><option value="">Todas as áreas</option></select></label><label for="orgAudience">Público atendido<select id="orgAudience"><option value="">Todos os públicos</option></select></label><label for="orgReach">Abrangência<select id="orgReach"><option value="">Todas</option></select></label><label for="orgCancer">Tipo de câncer<select id="orgCancer"><option value="">Todos os tipos informados</option></select></label></div></details>
     </div></div></section>
     <section class="results-section"><div class="container"><div class="results-heading"><div><p class="eyebrow">RESULTADOS</p><h2>Organizações disponíveis</h2><p id="orgCount" role="status"></p></div><button id="clearOrgFilters" class="clear-button" type="button">Limpar filtros <span aria-hidden="true">×</span></button></div><div id="orgResults" class="organization-results" aria-live="polite"></div><p class="results-note">Os serviços exibidos dependem das informações cadastradas, autorizadas e validadas. A avaliação interna das organizações não aparece no diretório.</p></div></section>
   </main>
-  <footer class="site-footer"><div class="container footer-grid"><div><a class="brand footer-brand" href="index.html"><img src="assets/ponte-mark.svg" alt=""><span><strong>ponte</strong><small>um projeto do Portal VPM</small></span></a><p>Uma plataforma de conexões e ensino na causa do câncer.</p></div><nav aria-label="Explorar"><strong>Explore</strong><a href="oncoflix.html">Aprender sobre o câncer</a><a href="organizacoes.html">Organizações</a><a href="vitrine.html">Vitrine Ponte</a><a href="conta.html#entrar">Entrar</a></nav><nav aria-label="Informações"><strong>Portal VPM</strong><a href="informacoes.html#privacidade">Privacidade</a><a href="informacoes.html#termos">Termos de uso</a><a href="informacoes.html#contato">Contato</a><a href="conta.html#cadastro">Empresas interessadas</a></nav><div class="vpm-sign"><img src="assets/logo-vpm-roxo.png" alt="Portal VPM"></div></div><div class="container footer-base">Projeto Ponte · Portal VPM <span>Protótipo com dados de teste, sem banco de dados.</span></div></footer>
+  <footer class="site-footer"><div class="container footer-grid"><div><a class="brand footer-brand" href="index.html"><img src="assets/ponte-mark.svg" alt=""><span><strong>OncoPontes</strong><small>um projeto do Portal VPM</small></span></a><p>Uma plataforma de conexões e ensino na causa do câncer.</p></div><nav aria-label="Explorar"><strong>Explore</strong><a href="oncoflix.html">Aprender sobre o câncer</a><a href="organizacoes.html">Organizações</a><a href="vitrine.html">Vitrine Ponte</a><a href="conta.html#entrar">Entrar</a></nav><nav aria-label="Informações"><strong>Portal VPM</strong><a href="informacoes.html#privacidade">Privacidade</a><a href="informacoes.html#termos">Termos de uso</a><a href="informacoes.html#contato">Contato</a><a href="conta.html#cadastro">Empresas interessadas</a></nav><div class="vpm-sign"><img src="assets/logo-vpm-roxo.png" alt="Portal VPM"></div></div><div class="container footer-base">OncoPontes · Portal VPM <span>Protótipo com dados de teste, sem banco de dados.</span></div></footer>
 </body>
 </html>

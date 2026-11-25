@@ -1,0 +1,40 @@
+/* Componentes adicionais do fluxo institucional, com a identidade visual aprovada. */
+.area-page .area-form select{padding:12px 14px;border:1px solid #bdb3c6;border-radius:4px;background:#fff;color:var(--purple);font:inherit}
+.area-page .area-form small{font-size:12px;line-height:1.4;color:#665c68;font-weight:500}
+.area-page .org-options{border:1px solid var(--line);padding:18px;margin:0;background:#fff}
+.area-page .org-options legend{font-size:13px;font-weight:800;color:var(--purple);padding:0 7px}
+.area-page .org-check-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 16px;max-height:245px;overflow:auto}
+.area-page .org-check-grid label{display:flex;align-items:flex-start;gap:8px;font-size:12px;font-weight:600;line-height:1.4}
+.area-page .org-check-grid input,.area-page .org-consent input{width:16px;height:16px;flex:none;accent-color:var(--accent)}
+.area-page .org-consent{display:flex;align-items:flex-start;gap:10px;max-width:720px}
+.area-page .org-form-actions{display:flex;flex-wrap:wrap;gap:10px}
+.area-page .org-diagnosis-card strong{font-size:20px}
+.area-page .org-diagnosis-card p{overflow-wrap:anywhere}
+.area-page .org-diagnosis-card b{color:var(--purple)}
+.area-page .area-form [hidden]{display:none!important}
+@media(max-width:700px){.area-page .org-check-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:470px){.area-page .org-check-grid{grid-template-columns:1fr}}
+.admin-page .org-admin-list{display:flex;gap:8px;overflow-x:auto;padding:14px 0 20px;margin:10px 0;border-bottom:1px solid var(--line)}
+.admin-page .area-card{border:1px solid var(--line);background:#fff;padding:22px;margin:18px 0;min-width:0}
+.admin-page .area-card h3{font-size:22px;margin:4px 0 12px}
+.admin-page .area-card p{font-size:13px;line-height:1.6}
+.admin-page .area-note{border-left:3px solid var(--accent);background:#f2edf2;padding:15px 18px;margin:20px 0;color:var(--purple);font-size:12px;line-height:1.55}
+.admin-page .org-admin-list button{flex:none;border:1px solid var(--line);background:white;color:var(--purple);padding:10px 13px;font:700 12px Manrope,Arial,sans-serif;cursor:pointer}
+.admin-page .org-admin-list button[aria-current="page"]{border-color:var(--accent);background:#f2eaf2}
+.admin-page .org-admin-filter{display:grid;gap:6px;max-width:330px;font-size:12px;font-weight:800;margin:20px 0}
+.admin-page .org-admin-filter select{padding:10px;border:1px solid var(--line);background:white;color:var(--purple);font:inherit}
+.admin-page .org-admin-details{border-top:1px solid var(--line);padding:11px 0}
+.admin-page .org-admin-details summary{cursor:pointer;font-weight:800;color:var(--purple)}
+.admin-page .org-admin-details dl,.admin-page .org-admin-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:15px 0}
+.admin-page .org-admin-details dt,.admin-page .org-admin-fields dt{font-size:11px;font-weight:800;color:#736878}
+.admin-page .org-admin-details dd,.admin-page .org-admin-fields dd{margin:2px 0 0;font-size:13px;overflow-wrap:anywhere}
+.admin-page .org-admin-form{display:grid;gap:14px;margin:24px 0;padding:22px;border:1px solid var(--line);background:#fff}
+.admin-page .org-admin-form label{display:grid;gap:6px;font-size:12px;font-weight:800}
+.admin-page .org-admin-form input,.admin-page .org-admin-form textarea,.admin-page .org-admin-form select{width:100%;min-width:0;border:1px solid #bdb3c6;border-radius:4px;padding:11px 12px;font:inherit;color:var(--purple);background:#fff}
+.admin-page .org-form-actions{display:flex;flex-wrap:wrap;gap:8px}
+.admin-page .org-admin-form button,.admin-page [data-show-mediation]{width:auto;justify-self:start;border:1px solid var(--accent);border-radius:4px;padding:10px 13px;background:var(--accent);color:white;font:800 12px Manrope,Arial,sans-serif;cursor:pointer}
+.admin-page .org-table-wrap{overflow-x:auto}
+.admin-page .org-table-wrap table{border-collapse:collapse;width:100%;font-size:12px}
+.admin-page .org-table-wrap th,.admin-page .org-table-wrap td{text-align:left;border-bottom:1px solid var(--line);padding:10px;vertical-align:top}
+.admin-page [data-edit-opportunity]{border:0;background:none;color:var(--accent);font:800 12px Manrope,Arial,sans-serif;text-decoration:underline;cursor:pointer}
+@media(max-width:600px){.admin-page .org-admin-details dl,.admin-page .org-admin-fields{grid-template-columns:1fr}}

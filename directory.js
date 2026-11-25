@@ -20,7 +20,7 @@ const selected=new Set();
 const initial=new URLSearchParams(location.search).get('servico');
 if(categories.some(category=>category.id===initial))selected.add(initial);
 $('#orgState').innerHTML+=states.map(state=>`<option value="${state}">${state}</option>`).join('');
-for(const [id,key] of [['orgArea','area'],['orgAudience','audience'],['orgReach','reach']]){
+for(const [id,key] of [['orgArea','area'],['orgAudience','audience'],['orgReach','reach'],['orgCancer','cancerTypes']]){
   const options=[...new Set(organizations.flatMap(item=>values(item[key])))].sort((a,b)=>a.localeCompare(b,'pt-BR'));
   $('#'+id).innerHTML+=options.map(value=>`<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join('');
 }
@@ -38,27 +38,28 @@ function renderCategories(){
   }));
 }
 function renderResults(){
-  const state=$('#orgState').value,city=normalize($('#orgCity').value),name=normalize($('#orgName').value),area=$('#orgArea').value,audience=$('#orgAudience').value,reach=$('#orgReach').value;
+  const state=$('#orgState').value,city=normalize($('#orgCity').value),name=normalize($('#orgName').value),area=$('#orgArea').value,audience=$('#orgAudience').value,reach=$('#orgReach').value,cancer=$('#orgCancer').value;
   const results=organizations.filter(item=>{
     if(selected.size&&![...selected].some(id=>hasService(item,categories.find(category=>category.id===id))))return false;
-    if(state&&normalize(item.state)!==normalize(state))return false;
-    if(city&&!normalize(item.city).includes(city))return false;
+    if(state&&!values(item.states||item.state).some(value=>normalize(value)===normalize(state)))return false;
+    if(city&&!values(item.cities||item.city).some(value=>normalize(value).includes(city)))return false;
     if(name&&!normalize(item.name).includes(name))return false;
     if(area&&!values(item.area).includes(area))return false;
     if(audience&&!values(item.audience).includes(audience))return false;
     if(reach&&!values(item.reach).includes(reach))return false;
+    if(cancer&&!values(item.cancerTypes).includes(cancer))return false;
     return true;
   });
   $('#orgCount').textContent=organizations.length?`${results.length} ${results.length===1?'perfil demonstrativo encontrado':'perfis demonstrativos encontrados'}`:'Ainda não há organizações para exibir.';
   if(!organizations.length){$('#orgResults').innerHTML='<div class="organization-empty"><strong>O diretório está em preparação.</strong><p>Nenhuma ONG ou instituição foi publicada ainda. Os filtros já podem ser explorados; os resultados aparecerão após cadastro, autorização e validação das informações.</p></div>';return;}
   if(!results.length){$('#orgResults').innerHTML='<div class="organization-empty"><strong>Nenhuma organização encontrada com estes filtros.</strong><p>Você pode escolher outros serviços, retirar o filtro de município ou ampliar a busca para todo o Brasil.</p></div>';return;}
   $('#orgResults').innerHTML=results.map(item=>{
-    const details=[['Localização',[item.city,item.state].filter(Boolean).join(' / ')],['Área de atuação',values(item.area).join(', ')],['Serviços cadastrados',values(item.services).join(', ')],['Público atendido',values(item.audience).join(', ')]];
+    const details=[['Localização',[values(item.cities||item.city).join(', '),values(item.states||item.state).join(', ')].filter(Boolean).join(' / ')],['Área de atuação',values(item.area).join(', ')],['Serviços cadastrados',values(item.services).join(', ')],['Público atendido',values(item.audience).join(', ')],['Tipos de câncer atendidos',values(item.cancerTypes).join(', ')]];
     const contact=item.publicContactConsent===true&&(item.publicContactUrl||item.publicWebsite);
     const safeContact=contact&&/^https:\/\//i.test(contact)?contact:null;
     return `<article class="organization-card"><span class="eyebrow">${item.demo?'CONTEÚDO DEMONSTRATIVO · ORGANIZAÇÃO FICTÍCIA':'ORGANIZAÇÃO AUTORIZADA'}</span><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.summary||'')}</p><dl>${details.filter(([,value])=>value).map(([label,value])=>`<div><dt>${label}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl><a href="perfil.html?tipo=ong&id=${encodeURIComponent(item.id)}">Ver perfil ${item.demo?'fictício':'da organização'} ↗</a>${item.demo?`<p class="demo-contact">Contato fictício: ${escapeHtml(item.contact||'não informado')} · Não envia mensagens.</p>`:safeContact?` · <a href="${escapeHtml(safeContact)}" target="_blank" rel="noopener noreferrer">Canal oficial ↗</a>`:''}</article>`;
   }).join('');
 }
-['orgState','orgCity','orgName','orgArea','orgAudience','orgReach'].forEach(id=>$('#'+id).addEventListener(id==='orgState'||id==='orgArea'||id==='orgAudience'||id==='orgReach'?'change':'input',renderResults));
-$('#clearOrgFilters').addEventListener('click',()=>{selected.clear();['orgState','orgCity','orgName','orgArea','orgAudience','orgReach'].forEach(id=>$('#'+id).value='');history.replaceState(null,'',location.pathname);renderCategories();renderResults();});
+['orgState','orgCity','orgName','orgArea','orgAudience','orgReach','orgCancer'].forEach(id=>$('#'+id).addEventListener(['orgState','orgArea','orgAudience','orgReach','orgCancer'].includes(id)?'change':'input',renderResults));
+$('#clearOrgFilters').addEventListener('click',()=>{selected.clear();['orgState','orgCity','orgName','orgArea','orgAudience','orgReach','orgCancer'].forEach(id=>$('#'+id).value='');history.replaceState(null,'',location.pathname);renderCategories();renderResults();});
 renderCategories();renderResults();

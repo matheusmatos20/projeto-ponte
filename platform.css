@@ -13,7 +13,7 @@ body p{line-height:1.65}
 .site-header .header-inner{height:auto;min-height:94px}
 .site-header .brand{color:var(--purple);gap:12px}
 .site-header .brand img,.site-header .brand-mark{width:49px;height:49px;border-radius:14px;background:none}
-.site-header .brand strong{font:800 32px/1 Manrope,Arial,sans-serif;letter-spacing:-.09em}
+.site-header .brand strong{font:800 26px/1 Manrope,Arial,sans-serif;letter-spacing:-.07em}
 .site-header .brand small{font:600 8px/1.1 Manrope,Arial,sans-serif;letter-spacing:.08em;color:#6e6572;text-transform:uppercase;margin-top:4px}
 .main-nav .button,.main-nav .button-sm{background:var(--accent);border-color:var(--accent);border-radius:5px;color:white;padding:11px 15px}
 .main-nav .button:hover{background:#6d0057;color:white}

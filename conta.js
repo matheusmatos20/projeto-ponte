@@ -10,7 +10,7 @@ const roles = {
     modules: [['Meu Oncoflix','Acesse as jornadas demonstrativas.'],['Meu perfil','Guarde seus interesses nesta aba.']]
   },
   paciente: {
-    name: 'Paciente ou sobrevivente', title: 'Seu espaço no Ponte',
+    name: 'Paciente ou sobrevivente', title: 'Seu espaço na OncoPontes',
     intro: 'Acompanhe conteúdos, jornadas e iniciativas disponíveis para a sua participação.',
     next: 'Escolher interesses', nextDetail: 'Informações de saúde não fazem parte deste cadastro.',
     visibility: 'Perfil privado', access: 'Pacientes e sobreviventes não aparecem no diretório público geral. O perfil de saúde será opcional e separado quando houver estrutura jurídica e técnica para isso.',
@@ -46,7 +46,7 @@ const roles = {
       ['Meu perfil institucional','Identificação, sede, abrangência e apresentação autorizada.'],['Diagnóstico institucional','Necessidades e capacidades para análise interna, sem ranking público.'],['Documentos e certificados','Arquivos com acesso e finalidade definidos.'],['Projetos','Iniciativas públicas autorizadas e projetos restritos da organização.'],['Educação e desenvolvimento','Conteúdos destinados ao fortalecimento institucional.'],['Oportunidades e ativações','Convites e conexões acompanhados pelo Portal VPM.'],['Campanhas e jornadas','Participação conforme seleção, convite e prazo.'],['Entregas e relatórios','Acompanhamento de responsabilidades e resultados.'],['Representantes','Acessos com permissões específicas e revogáveis.']]
   },
   empreendedora: {
-    name: 'Empreendedora', title: 'Seu negócio no Ponte',
+    name: 'Empreendedora', title: 'Seu negócio na OncoPontes',
     intro: 'Apresente seu trabalho e conheça educação, conexões e iniciativas relacionadas ao negócio.',
     next: 'Apresentar o negócio', nextDetail: 'A vitrine depende de autorização e revisão.',
     visibility: 'Publicação sob autorização', access: 'A apresentação pública, os produtos e os canais de contato só serão exibidos conforme sua autorização e as regras de publicação.',
@@ -73,7 +73,7 @@ const roles = {
       ['Perfil institucional','Dados e apresentação da empresa.'],['Projetos autorizados','Somente projetos atribuídos ao representante.'],['Cronogramas','Etapas das iniciativas autorizadas.'],['Entregas e aprovações','Materiais e resultados previstos em cada projeto.'],['Indicadores agregados','Resultados permitidos, sem dados individuais.'],['Relatórios de execução','Informações de projetos autorizados.'],['Histórico de iniciativas','Ações realizadas com a empresa.'],['Usuários internos','Representantes e permissões da conta institucional.']]
   },
   admin: {
-    name: 'Administração VPM', title: 'Gestão do Projeto Ponte',
+    name: 'Administração VPM', title: 'Gestão da OncoPontes',
     intro: 'Visão demonstrativa da administração e da curadoria central do Portal VPM.',
     next: 'Estruturar permissões', nextDetail: 'Nenhuma decisão real pode ser tomada nesta prévia.',
     visibility: 'Acesso administrativo', access: 'As funções administrativas devem ser segmentadas por necessidade. Esta demonstração não permite aprovar pessoas, acessar documentos ou publicar conteúdos.',
@@ -124,6 +124,7 @@ const demoAccounts = [
   ['admin@ponte.test','Equipe VPM',['admin']],
   ['multiperfil@ponte.test','Participante com dois perfis',['paciente','empreendedora']]
 ].map(([email,name,roleIds])=>({email,name,password:DEMO_PASSWORD,profiles:roleIds.map(role=>({role,data:{},institution:role==='ong'?'Organização de demonstração':role==='empresa'?'Empresa de demonstração':''})),demo:true}));
+const canonicalDemoEmail=value=>String(value).trim().toLowerCase().replace('@oncopontes.test','@ponte.test');
 
 const createdAccounts = [];
 let account = null;
@@ -155,7 +156,8 @@ function institutionField(role,where){
   target.innerHTML=role==='ong'?'<label>Nome da organização <input name="institution" required maxlength="120" placeholder="Nome da organização"></label>':role==='empresa'?'<label>Nome da empresa ou instituição <input name="institution" required maxlength="120" placeholder="Nome da instituição"></label>':'';
 }
 function login(email,password){
-  const found=[...demoAccounts,...createdAccounts].find(item=>item.email.toLowerCase()===email.trim().toLowerCase()&&item.password===password);
+  const normalized=email.trim().toLowerCase();
+  const found=demoAccounts.find(item=>item.email===canonicalDemoEmail(normalized)&&item.password===password)||createdAccounts.find(item=>item.email.toLowerCase()===normalized&&item.password===password);
   if(!found){showError('loginError','E-mail ou senha de teste não conferem. Confira os dados e tente novamente.');return;}
   account=found; activeRole=found.profiles[0].role; clearErrors(); renderDashboard();
 }
@@ -275,7 +277,7 @@ function openModule(index){
     for(const [key,label] of roles[activeRole].fields){const value=profile.data[key]||((key==='instituicao')?profile.institution:'');html+=`<label>${escapeHtml(label)} <input name="${key}" value="${escapeHtml(value)}" maxlength="200" autocomplete="off"></label>`;}
     html+='<button class="form-submit" type="submit">Guardar rascunho nesta aba <span>↗</span></button></form>';
   }else{
-    html+='<div class="dialog-note">Área prevista nos documentos do Projeto Ponte. Ainda não há conteúdos, projetos ou registros reais nesta demonstração.</div>';
+    html+='<div class="dialog-note">Área prevista nos documentos da OncoPontes. Ainda não há conteúdos, projetos ou registros reais nesta demonstração.</div>';
   }
   $('#moduleContent').innerHTML=html;
   $('#moduleDialog').showModal();
@@ -285,7 +287,7 @@ $('#loginTab').addEventListener('click',()=>showTab('login'));
 $('#registerTab').addEventListener('click',()=>showTab('register'));
 $('#registerRole').innerHTML=roleOptions(personalRoles);
 $('#newProfileRole').innerHTML=roleOptions(personalRoles);
-$('#demoAccount').innerHTML+='<option value="multiperfil@ponte.test">Conta com dois perfis</option>'+Object.entries(roles).filter(([id])=>id!=='admin').map(([id,role])=>`<option value="${id}@ponte.test">${escapeHtml(role.name)}</option>`).join('');
+$('#demoAccount').innerHTML+='<option value="multiperfil@oncopontes.test">Conta com dois perfis</option>'+Object.entries(roles).filter(([id])=>id!=='admin').map(([id,role])=>`<option value="${id}@oncopontes.test">${escapeHtml(role.name)}</option>`).join('');
 $('#demoAccount').addEventListener('change',event=>{if(!event.target.value)return;$('#loginEmail').value=event.target.value;$('#loginPassword').value=DEMO_PASSWORD;clearErrors();});
 $('#registerRole').addEventListener('change',event=>institutionField(event.target.value,'registerRoleFields'));
 $('#registerNext1').addEventListener('click',()=>{
@@ -294,7 +296,7 @@ $('#registerNext1').addEventListener('click',()=>{
   const invalid=fields.find(field=>!field.checkValidity());
   if(invalid){invalid.reportValidity();return;}
   const email=$('#registerEmail').value.trim().toLowerCase();
-  if([...demoAccounts,...createdAccounts].some(item=>item.email===email))return showError('registerError','Este e-mail já está em uso nesta demonstração. Entre com a conta ou use outro e-mail.');
+  if(demoAccounts.some(item=>item.email===canonicalDemoEmail(email))||createdAccounts.some(item=>item.email===email))return showError('registerError','Este e-mail já está em uso nesta demonstração. Entre com a conta ou use outro e-mail.');
   showRegisterStep(2);
 });
 $('#registerNext2').addEventListener('click',()=>{
@@ -313,7 +315,7 @@ $('#registerForm').addEventListener('submit',event=>{
   if(currentRegisterStep!==3)return;
   const email=$('#registerEmail').value.trim().toLowerCase(),name=$('#registerName').value.trim(),password=$('#registerPassword').value,role=$('#registerRole').value;
   if(!role)return showError('registerError','Escolha seu primeiro perfil.');
-  if([...demoAccounts,...createdAccounts].some(item=>item.email===email))return showError('registerError','Este e-mail já está em uso nesta demonstração. Entre com a conta ou use outro e-mail.');
+  if(demoAccounts.some(item=>item.email===canonicalDemoEmail(email))||createdAccounts.some(item=>item.email===email))return showError('registerError','Este e-mail já está em uso nesta demonstração. Entre com a conta ou use outro e-mail.');
   if(password.length<8)return showError('registerError','Use uma senha de teste com pelo menos 8 caracteres.');
   const institution=($('#registerRoleFields input')?.value||'').trim();
   if((role==='ong'||role==='empresa')&&!institution)return showError('registerError','Informe o nome da organização ou empresa.');

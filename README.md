@@ -1,6 +1,6 @@
-# Projeto Ponte — protótipo navegável
+# OncoPontes — protótipo navegável
 
-Protótipo do Projeto Ponte, iniciativa do Portal VPM, atualizado conforme os Documentos 1, 2, 4 e 5, o trecho recebido do Documento 3 e o relatório de revisão cruzada. Os documentos de origem não são publicados neste repositório.
+Protótipo da OncoPontes, iniciativa do Portal VPM, atualizado conforme os Documentos 1, 2, 4 e 5, o trecho recebido do Documento 3 e o relatório de revisão cruzada. Os documentos de origem não são publicados neste repositório.
 
 A direção visual aprovada usa roxo profundo, verde petróleo, superfícies claras, tipografia Manrope e uma fotografia documental identificada como ilustrativa. O sistema é compartilhado pela experiência pública, pelo acesso e pelos ambientes individuais. A fotografia e seus créditos estão documentados em `proposta-visual/DIRECAO.md`.
 
@@ -9,21 +9,23 @@ A direção visual aprovada usa roxo profundo, verde petróleo, superfícies cla
 | Área | Fluxo disponível |
 | --- | --- |
 | Página inicial | Três caminhos: aprender, encontrar apoio e fazer parte da rede |
-| Diretório de ONGs | Seis organizações fictícias em seis estados, filtros por serviço, localização, público e área, e páginas institucionais individuais |
+| Diretório de ONGs | Organizações fictícias, filtros por serviço, localização, público, área, abrangência e tipo de câncer informado, com páginas institucionais individuais |
 | Vitrine Ponte | Página própria e categorias separadas de profissionais, empreendedores e projetos; perfis e projeto de demonstração com páginas individuais |
 | Conexão mediada | Formulário demonstrativo na página da ONG, sem envio de dados |
 | Conta | Login central, cadastro básico, inclusão e troca de perfis |
 | Painéis | Ambientes próprios para aprendiz, paciente, familiar, ONG, profissional, empreendedor e empresa; administração VPM separada |
 | Oncoflix | Quatro jornadas, duas aulas e uma atividade por jornada, com progresso de teste por perfil |
-| ONG | Cadastro em dez etapas, rascunho, percentual de preenchimento e diagnóstico privado fictício |
+| ONG | Cadastro institucional em sete etapas, diagnóstico privado em nove dimensões, formação por tema, múltiplos projetos e acompanhamento de oportunidades fictícias |
 | Empresa | Projeto fictício atribuído, etapas, entregas e indicadores agregados 5/3/2 |
-| Administração | Ambiente demonstrativo separado da navegação pública e dos painéis comuns; sem proteção de servidor nesta versão |
+| Administração | Revisão demonstrativa de organizações e projetos, status de compliance, observações internas e registro de intermediação; sem proteção de servidor nesta versão |
 
-A página inicial apresenta o Projeto Ponte como **uma plataforma de conexões e ensino na causa do câncer**. O cadastro em três etapas e a alternância entre perfis continuam disponíveis. Dados de demonstração são identificados em cada área.
+A página inicial apresenta a OncoPontes como **uma plataforma de conexões e ensino na causa do câncer**. O cadastro em três etapas e a alternância entre perfis continuam disponíveis. Dados de demonstração são identificados em cada área.
 
 Pacientes, familiares e comunicadores **não** têm diretório ou vitrine pública. O diagnóstico institucional da ONG permanece fora da página pública. As seis organizações do diretório são fictícias e não oferecem atendimento. Nenhum perfil, projeto, produto, curso ou parceiro real está publicado. A fotografia da página inicial é ilustrativa e não retrata participantes do projeto.
 
 Os links de privacidade, termos e contato levam a uma página que explica os limites do protótipo. Os textos jurídicos definitivos e o canal oficial de contato ainda não foram fornecidos para publicação.
+
+O novo fluxo institucional segue os campos nomeados na especificação de ajustes da OncoPontes. A exportação do Airtable com as 59 colunas ainda não foi recebida: opções e campos ambíguos estão identificados para conferência, sem fusão ou exclusão de informações de origem. Documentos selecionados no formulário não são enviados nem armazenados. As decisões administrativas e os projetos ficam apenas no armazenamento local do navegador, para demonstrar o fluxo; não representam uma integração entre usuários reais.
 
 ## Acesso de teste
 
@@ -31,18 +33,20 @@ Abra `conta.html` ou use **Entrar ou cadastrar** no site. Todas as contas abaixo
 
 | Perfil | E-mail |
 | --- | --- |
-| Pessoa interessada em aprender | `aprendiz@ponte.test` |
-| Paciente | `paciente@ponte.test` |
-| Familiar | `familiar@ponte.test` |
-| Profissional da saúde | `profissional@ponte.test` |
-| ONG | `ong@ponte.test` |
-| Empreendedora | `empreendedora@ponte.test` |
-| Comunicador ou ativista | `comunicador@ponte.test` |
-| Empresa | `empresa@ponte.test` |
-| Administração VPM | `admin@ponte.test` |
-| Paciente e empreendedora na mesma conta | `multiperfil@ponte.test` |
+| Pessoa interessada em aprender | `aprendiz@oncopontes.test` |
+| Paciente | `paciente@oncopontes.test` |
+| Familiar | `familiar@oncopontes.test` |
+| Profissional da saúde | `profissional@oncopontes.test` |
+| ONG | `ong@oncopontes.test` |
+| Empreendedora | `empreendedora@oncopontes.test` |
+| Comunicador ou ativista | `comunicador@oncopontes.test` |
+| Empresa | `empresa@oncopontes.test` |
+| Administração VPM | `admin@oncopontes.test` |
+| Paciente e empreendedora na mesma conta | `multiperfil@oncopontes.test` |
 
-O cadastro de teste também permite criar uma conta e adicionar um segundo perfil. Dados da sessão, rascunhos e progresso ficam apenas no armazenamento temporário do navegador; senhas criadas no formulário permanecem somente em memória enquanto a página está aberta. **Não use dados pessoais, documentos ou informações de saúde reais.**
+Os e-mails antigos `@ponte.test` continuam aceitos como aliases das mesmas contas fictícias.
+
+O cadastro de teste também permite criar uma conta e adicionar um segundo perfil. Dados da sessão e progresso ficam no armazenamento temporário do navegador; rascunhos, análises e projetos fictícios da ONG ficam no armazenamento local deste navegador. Senhas criadas no formulário permanecem somente em memória enquanto a página está aberta. **Não use dados pessoais, documentos ou informações de saúde reais.**
 
 ## Executar localmente
 

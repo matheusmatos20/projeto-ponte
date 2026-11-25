@@ -7,7 +7,7 @@ const query=new URLSearchParams(location.search);
 const role=query.get('perfil')||session?.activeRole;
 const allowed=!!session&&!!demo.profiles[role]&&session.profiles?.some(profile=>profile.role===role);
 $('#areaDenied').hidden=allowed;$('#areaApp').hidden=!allowed;
-if(allowed){
+if(allowed&&role!=='ong'){
   const config=demo.profiles[role],profile=session.profiles.find(item=>item.role===role);
   if(session.activeRole!==role){session.activeRole=role;sessionStorage.setItem('ponteDemoSession',JSON.stringify(session));}
   const areaUrl=(section='inicio',extra='')=>`area.html?perfil=${encodeURIComponent(role)}&secao=${encodeURIComponent(section)}${extra}`;
@@ -32,7 +32,7 @@ if(allowed){
   $('#areaEyebrow').textContent=`PERFIL ATIVO · ${role==='ong'?'ORGANIZAÇÃO':role==='empresa'?'EMPRESA':role.toUpperCase()}`;
   $('#areaTitle').textContent=config.title;
   $('#areaIntro').textContent=config.intro;
-  document.title=`${config.title} | Projeto Ponte`;
+  document.title=`${config.title} | OncoPontes`;
   $('#areaProfileSelect').innerHTML=session.profiles.filter(item=>demo.profiles[item.role]).map(item=>`<option value="${esc(item.role)}">${esc(item.role==='ong'?'ONG':item.role==='empresa'?'Empresa':item.role.charAt(0).toUpperCase()+item.role.slice(1))}</option>`).join('');
   $('#areaProfileSelect').value=role;
   $('#areaProfileSelect').addEventListener('change',event=>{session.activeRole=event.target.value;sessionStorage.setItem('ponteDemoSession',JSON.stringify(session));location.href=`area.html?perfil=${encodeURIComponent(event.target.value)}`;});
